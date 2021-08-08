@@ -1,0 +1,363 @@
+
+$LogoContainer:#ED3137;
+$TextSize:14px;
+$FooterBackgroundColor1:#FFFFFF;
+$DeviceMinWidth:275px;
+$NavItemColor:#373737;
+$DeviceMinWidth:275px;
+
+@mixin  flexCenter{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    list-style: none;
+}
+@mixin  CenterElement($Width){
+    margin: 0 auto;
+    width: $Width;
+}
+@import"./detail";
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    position: fixed;
+    z-index: 5;
+}
+.body{
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    min-width: 280px;
+}
+.LogoContainer{
+    width: 100%;
+    height: 80px;
+    position: relative;
+    min-width: $DeviceMinWidth;
+ 
+    h2{
+        height: 70px;
+        color: $FooterBackgroundColor1;
+        text-align: center;
+        line-height: 70px;
+        font-size: 25px;
+    }
+    .search{
+        position:absolute;
+        margin: auto;
+        height: 35px;
+        padding-left: 10px;
+        left: 0;
+        right: 0;
+        top: 70px;
+        width: 61%;
+        bottom:-10px;
+        background-color:$FooterBackgroundColor1;
+        box-shadow:0px 4px 20px rgb(189, 188, 188);
+        border:none;
+        border-radius: 25px;
+        min-width:220px;
+        z-index: 2;
+        &:focus{
+            outline: none;
+        }
+    }
+    span{
+        border: 1px solid $FooterBackgroundColor1;
+        position: absolute;
+        width: 35px;
+        height: 0px;
+        margin-left: 10px;
+        background-color: $FooterBackgroundColor1;
+    }
+    #bar__1{
+       top: 30px;
+    }
+    #bar__2{
+        top: 36px;
+    }
+    #bar__3{
+        top: 43px;
+         
+     }
+
+}
+.LogoContainer-M{
+    background-color: $LogoContainer;
+}
+
+.FooterContainer{
+    height: 30px;
+    width: 100vw;
+    position: absolute;
+    bottom: 0px;
+    min-width: $DeviceMinWidth;
+}
+.FooterContainer-M{
+    background-color: $FooterBackgroundColor1;
+}
+.FooterContainer__nav{
+    @include flexCenter();
+    margin: auto 0;
+    width: 99%;
+    min-width: $DeviceMinWidth;
+    li{
+        font-size: $TextSize;
+        text-align: center;
+    }
+}
+.BodyNavContainer{
+    width: 100vw;
+    overflow: hidden;
+    height: 80px;
+    line-height: 110px;
+    min-width: $DeviceMinWidth;
+    border-bottom: 2px solid $LogoContainer;
+    background-color:$DeviceMinWidth;
+    background-color: $FooterBackgroundColor1;
+    li{
+        color: $NavItemColor;
+        font-size: x-small;
+        position: relative;  
+        
+    }
+
+    span{
+        position: absolute;
+        width: 62px;
+        border: 1px solid $LogoContainer;
+        bottom: 0;
+        margin: auto;
+        left:0;
+        right: 0;
+        height:0px;
+        transition: height 0.15s ease-in;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: $LogoContainer;
+    }
+    #BodyNavContainer__nav__1{
+        left: -10px;
+    }
+    #BodyNavContainer__nav__2{
+        left: -7px;
+    }
+    li:hover span{
+        height: 33px;
+        transition: height 0.19s ease-out;
+    }
+    li:hover h3{
+      color: $LogoContainer;
+    }
+    li:hover {
+        cursor: pointer;
+      }
+}
+#BodyNavContainer__nav{
+    width: 99%;
+    min-width: $DeviceMinWidth;
+    margin: 0 auto;
+    border-bottom: 1px solid $LogoContainer;
+    @include flexCenter();
+}
+//this part handles the slide
+.sliderContainer{
+    width: 96%;
+    height: 170px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 180px;
+}
+#sliderContainer__slides{
+    position: absolute;
+    width: 200%;
+    height: 170px;
+    transition: 2s ease;
+    display: flex;
+    flex-direction: row;
+    li{
+        list-style: none;
+        width: 100%;
+        height: 100%;
+        h3{
+            color: $LogoContainer;
+            position: absolute;
+            top: 70%;
+            left: 22px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .secondSlide{
+        position: relative;
+        .secondSlide__ALL{
+            position: absolute;
+            top: 10%;
+            left: 65%;
+            font-size: 12px;
+            right: 0px;
+            text-align: center;
+        }
+        .secondSlide__NEXSHALES{
+            position: absolute;
+            top: 30%;
+            right: 0px;
+            text-align: right;
+            font-size: 27px;
+            padding-right: 5%;
+        }
+    }
+
+}
+.LogoContainer__dropDown{
+    position: absolute;
+    top: 71px;
+    left:-120px;
+    width: 120px;
+    height: 175px;
+    z-index: 3;
+    padding-bottom: 20px;
+    margin-top: 30px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 10px;
+    transition: left 0.15s ease-in;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    .LogoContainer__dropDown__item{
+        width: 120px;
+    }
+    .LogoContainer__cancel{
+        position: absolute;
+        top: 14px;
+        right: 50px;
+        span{
+            width: 30px;
+            border: 1px solid $LogoContainer;
+        }
+        .LogoContainer__cancel__cancel__bar1{
+            transform: translateY(-1px) rotateZ(-45deg);
+        }
+        .LogoContainer__cancel__cancel__bar2{
+            transform: translateY(-1px) rotatez(45deg);
+        }
+    }
+}
+.toggle{
+    left:0px;
+    transition: left 0.25s ease-out;
+}
+
+.LogoContainer__dropDown-M{
+    background-color: $FooterBackgroundColor1;
+}
+#LogoContainer__dropDown__item__link{
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    margin-top: 34px;
+    padding-left: 4px;
+}
+#LogoContainer__dropDown__item__link:hover{
+    border-bottom: 1px solid black;
+}
+#productContainer{
+    width:96%;
+    height: fit-content;
+    background-color:$FooterBackgroundColor1;
+    margin: 0 auto;
+    margin-top: 10px;
+    @include flexCenter();
+    flex-wrap: wrap;
+    li{
+        height: fit-content;
+        width: 170px;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        overflow:hidden;
+        padding-bottom: 10px;
+        box-shadow:0px 4px 5px rgb(221, 221, 221);
+    }
+    li h5{
+        color: $LogoContainer;
+        @include CenterElement(90%);
+    }
+    li p{
+        font-size: 12px;
+        @include CenterElement(90%);
+    }
+    li div{
+        
+        @include flexCenter();
+        @include CenterElement(90%);
+        justify-content: space-between;
+    }
+}
+.productContainer__Link{
+    display: inline-block;
+    height: 70%;
+    width: 100%;
+    color: black;
+    overflow: hidden;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.productContainer__Link__cart{
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+
+@media screen  and (min-width:700px){
+    #BodyNavContainer__nav{
+        margin: 0 auto;
+        li h3{
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+    .sliderContainer{
+        width: 90%;
+        height: 400px;
+        margin: 0 auto;
+        max-width: 921px;
+    }
+    #sliderContainer__slides{
+        width: 200%;
+        height: 100%;
+        transition: 1s ease;
+        li h3{
+            top: 52%;
+            left: 45px;
+            font-size: 35px;
+        }
+        li img{
+                width: 100%;
+                height: 69%;
+        }
+        .secondSlide .secondSlide__ALL{
+            font-size: 30px;
+        }
+        .secondSlide .secondSlide__NEXSHALES{
+            top: 20%;
+            font-size: 42px;
+        }
+    }    
+}
+
+
