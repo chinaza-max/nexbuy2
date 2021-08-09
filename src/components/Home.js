@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react';
-import LogoContainer from "./bodyFragment/LogoContainer";
-import Footer from "./bodyFragment/footer";
-import BodyNav from "./bodyFragment/bodyNav";
-import BodySlide from "./bodyFragment/homeSlide";
-import Product from "./bodyFragment/bodyProduct";
+import LogoContainer from "./homeFragment/LogoContainer";
+import Footer from "./homeFragment/footer";
+import BodyNav from "./homeFragment/bodyNav";
+import BodySlide from "./homeFragment/homeSlide";
+import Product from "./homeFragment/bodyProduct";
 import "../styles/style.css";
 
 

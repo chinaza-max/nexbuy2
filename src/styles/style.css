@@ -379,6 +379,21 @@
   }
 }
 
+#CartContainer {
+  width: 100vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  overflow-y: scroll;
+  min-width: 275px;
+}
+
+#CartContentContainer {
+  margin: 0 auto;
+  width: 96%;
+  background-color: blue;
+}
+
 * {
   margin: 0;
   padding: 0;

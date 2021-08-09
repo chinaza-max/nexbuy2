@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Product(props){
     const[Products,setProducts]=useState([])
-
+  
 
    
 
@@ -22,7 +22,7 @@ function Product(props){
           }
         })
         const json = await response.json();
-        setProducts(json.payload.products) 
+        //setProducts(json.payload.products) 
       } catch (error) {
         console.error(error);
       }

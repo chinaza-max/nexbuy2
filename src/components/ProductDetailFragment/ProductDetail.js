@@ -4,9 +4,10 @@ import DetailSlide from "./detailSlide";
 import DetailBody from "./detailBody";
 
 const ProductDetail=()=>{
+    let title="title"
     return(
             <div id="DetailContainer">
-                <Nav2/>
+                <Nav2 title={title}/>
                 <DetailSlide/>
                 <DetailBody/>
             </div>
