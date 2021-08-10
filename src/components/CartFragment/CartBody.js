@@ -6,7 +6,7 @@ import "../../styles/cart.css";
 
 
 
-const CartBody=()=>{
+const CartBody=(props)=>{
     const[HeaderTitle,setHeaderTitle]=useState()
 
     useEffect(async()=>{  
@@ -14,7 +14,7 @@ const CartBody=()=>{
     })
     return(
             <div id="CartContainer">
-               <CartNav title={HeaderTitle}/>
+               <CartNav title={HeaderTitle} history={props.history}/>
                <CartContent/>
                <Footer/>
             </div>

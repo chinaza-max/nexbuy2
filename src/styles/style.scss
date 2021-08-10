@@ -90,12 +90,14 @@ header{
 }
 
 .FooterContainer{
-    height: 30px;
+    height: 45px;
     width: 100vw;
     position: absolute;
     bottom: 0px;
     min-width: $DeviceMinWidth;
+    box-shadow: 4px 0px 20px #bdbcbc;
 }
+
 .FooterContainer-M{
     background-color: $FooterBackgroundColor1;
 }
@@ -104,11 +106,36 @@ header{
     margin: auto 0;
     width: 99%;
     min-width: $DeviceMinWidth;
+    :hover{
+        color: $LogoContainer;
+    }
     li{
         font-size: $TextSize;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: $NavItemColor;
+        span Link{
+            text-decoration: none;
+        }
     }
+    
 }
+.FooterContainer__nav__HomeLink{
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+  
+}
+.active{
+    color:$LogoContainer ;
+}
+.FooterContainer__nav__HomeLink{
+    text-decoration: none;
+}
+
 .BodyNavContainer{
     width: 100vw;
     overflow: hidden;

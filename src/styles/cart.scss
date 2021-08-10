@@ -20,6 +20,7 @@ $NavItemColor:#373737;
     background-color: $backgroundColor;
     color: $color;
     text-decoration: none;
+    border-radius: 10px;
 }
 
 #CartContainer{
@@ -30,34 +31,37 @@ $NavItemColor:#373737;
 }
 #CartContentContainer{
     @include CenterElement(96%);
-    background-color: blue;
+  
     height: 900px;
     margin-top: 100px;
     max-width: 768px;
     .CartContentContainer__items{
-        height: 250px;
+        height: fit-content;
         width: 100%;
-        background-color: chartreuse;
+
     }
 }
 .CartContentContainer__items__section1{
     @include flexCenter();
     justify-content: space-evenly;
     flex-wrap: wrap;
-    height: 150px;
     width: 100%;
     background-color: $FooterBackgroundColor1;
+    border-radius: 3px;
+    box-shadow: 0px 4px 20px #bdbcbc;
+    padding-bottom: 24px;
+    height:auto;
 }
 .CartContentContainer__items__section1__img{
     flex-basis: 30%;
-    height: 110px;
+    height: 120px;
     img{
         width: 100%;
         height: 100%
     }
 }
 .CartContentContainer__items__section1__text{
-    height:110px;
+    height:fit-content;
     flex-basis: 70%;
     min-width: 200px;
     .CartContentContainer__items__section1__text__ul1{
@@ -83,21 +87,25 @@ $NavItemColor:#373737;
         }
         :nth-child(2){
             margin-left: 15px;
-            color: $LogoContainer
+            color: $LogoContainer;
+            width: 18px;
         }
         :nth-child(3){
             margin-left: 15px
         }
         :nth-child(4){
             margin-left: 15px;
-            color: $LogoContainer
+            color: $LogoContainer;
+            width: 18px;
         }
     }
     
 }
 .CartContentContainer__items__section1__text__ul3{
+
     @include flexCenter();
     justify-content:flex-end;
+    
     li{
         margin-right: 10px;
     }
@@ -108,15 +116,24 @@ $NavItemColor:#373737;
 }
 
 .CartContentContainer__items__section2{
+    margin-top: 20px;
+    height: fit-content;
     @include flexCenter();
+    justify-content: space-between;
     li{
-        width: 180px;
-        height: 20px;
+        width: 150px;
+        height: 45px;
+        line-height: 40px;
         text-align: center;
+        border-radius: 10px;
+        font-size: 16px;
+        margin-bottom: 8px;
+        box-shadow: 0px 3px 15px #888888;
     }
 }
 .CartContentContainer__items__section2__buynow{
         text-decoration: none;
+       
         @include CartSection(red,$FooterBackgroundColor1);
 }
 

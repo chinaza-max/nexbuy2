@@ -1,6 +1,6 @@
 import {Fragment,useState,useEffect} from 'react';
 import { Link } from "react-router-dom";
-
+import {ShoppingCartIcon,CheckCircleIcon} from "../icons"
 
 
 function Product(props){
@@ -22,7 +22,7 @@ function Product(props){
           }
         })
         const json = await response.json();
-        //setProducts(json.payload.products) 
+        setProducts(json.payload.products) 
       } catch (error) {
         console.error(error);
       }
@@ -38,11 +38,11 @@ function Product(props){
                 <Link className="productContainer__Link" to={"#"}>
                   <img  src={data.image.url} alt={data.altImageUrl}></img>
                 </Link>
-                <h5>djdj</h5>
+                <h5>djdj <CheckCircleIcon/></h5>
                 <p>{data.productTitle}</p>
                 <div>
                   <span>{data.prices[0].regularPrice.minPrice}</span>
-                  <span><Link className="productContainer__Link__cart" to={"#"}>cart</Link></span>
+                  <span><Link className="productContainer__Link__cart" to={"#"}><ShoppingCartIcon/></Link></span>
                 </div>
               </li>
         )

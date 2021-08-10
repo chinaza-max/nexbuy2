@@ -9,14 +9,31 @@
 
 #Nav2 {
   width: 100vw;
-  height: 80px;
+  height: 60px;
   position: fixed;
   background-color: #ED3137;
   z-index: 2;
   min-width: 275px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-top: 20px;
 }
 
-#Nav2 h3 {
+#Nav2__title {
+  padding-top: 6px;
+}
+
+#Nav2__arrow {
+  font-size: 30px;
+  width: 50px;
   color: #FFFFFF;
 }
 

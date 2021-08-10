@@ -9,6 +9,7 @@ import "../styles/style.css";
 
 
 
+
 class Home extends React.Component{
 constructor({match}){
     super()
@@ -16,6 +17,7 @@ constructor({match}){
     this.mainFillerFunc=this.mainFillerFunc.bind(this)
     this.state={filteredText:'AgeAppropriate'}
     this.match=match
+    this.color="red"
     }
     filteredTextFun(value){
         this.setState({filteredText:value})
@@ -24,7 +26,8 @@ constructor({match}){
         this.setState({view:value})
     }
     
-  
+ 
+ 
 
      
     render(){
@@ -32,12 +35,13 @@ constructor({match}){
         return(
             <div className="body">
                 <header>
-                    <LogoContainer filteredTextFunP={this.filteredTextFun}/>
+                    <LogoContainer filteredTextFunP={this.filteredTextFun} history={this.props.history}/>
                     <BodyNav/>
                 </header>
                 <BodySlide/>
                 <Product  searchStringP={this.state.filteredText}/>
-                <Footer/>
+
+                <Footer home={0}/>
         </div>
         )
     }

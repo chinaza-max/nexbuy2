@@ -36,14 +36,23 @@ $DeviceMinWidth:275px;
 }
 #Nav2{
     width: 100vw;
-    height: 80px; 
+    height: 60px; 
     position: fixed;
     background-color: $LogoContainer;
     z-index: 2;
     min-width: $DeviceMinWidth;
-    h3{
-        color:$FooterBackgroundColor1;
-    }
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    padding-top: 20px;
+}
+#Nav2__title{
+    padding-top: 6px;
+}
+#Nav2__arrow{
+    font-size: 30px;
+    width: 50px;
+    color: $FooterBackgroundColor1;
 }
 #DetailSliderContainer{
     overflow: hidden;
