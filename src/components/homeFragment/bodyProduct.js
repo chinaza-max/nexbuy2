@@ -1,36 +1,57 @@
 import {Fragment,useState,useEffect} from 'react';
 import { Link } from "react-router-dom";
-import {ShoppingCartIcon,CheckCircleIcon} from "../icons"
+import {ShoppingCartIcon,CheckCircleIcon} from "../icons";
+import axios from "axios"
 
 
 function Product(props){
     const[Products,setProducts]=useState([])
+
+    function addToCart(title,description,url,color,amount){
+      //localStorage.removeItem('data')
+      let datas= JSON.parse(localStorage.getItem('data'))
+      //console.log(datas)
+      if(datas){
+       // console.log("chinaza")
+        datas.push({title,description,url,color,amount})
+        localStorage.setItem('data', JSON.stringify(datas))
+      }
+      else{
+         // console.log("moses")
+          datas=[];
+          datas.push({title,description,url,color,amount})
+          localStorage.setItem('data', JSON.stringify(datas))
+      }
+      datas= JSON.parse(localStorage.getItem('data'))
+     // console.log(datas)
+    }
+ 
   
-
    
-
-    const URL=`https://kohls.p.rapidapi.com/products/list?limit=24&offset=1&dimensionValueID=${props.searchStringP}`
+  
      useEffect(async()=>{  
       const controller = new AbortController()
       const signal = controller.signal
-      try {
-        let response=await fetch(URL,{signal}, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-key": "b03b577e45mshb62f4d5ecbfae57p108324jsna07cb1377bb8",
-                "x-rapidapi-host": "kohls.p.rapidapi.com"
-          }
-        })
-        const json = await response.json();
-        setProducts(json.payload.products) 
-      } catch (error) {
+      var options = {
+        method: 'GET',
+        url: 'https://kohls.p.rapidapi.com/products/list',
+        params: {limit: '12', offset: '1', dimensionValueID: 'AgeAppropriate:Teens'},
+        headers: {
+          'x-rapidapi-key': '3942ebb38emsh3de9dd6c09cab3cp1118a8jsne7e9cefbb396',
+          'x-rapidapi-host': 'kohls.p.rapidapi.com'
+        }
+      ,signal
+      };
+      
+      /*axios.request(options).then(function (response) {
+        setProducts(response.data.payload.products) 
+      }).catch(function (error) {
         console.error(error);
-      }
+      });*/
       return function cleanUp(){
         controller.abort()
       }
-
-    },[URL])
+    },)
     let ProductsContent=Products.map((data,index)=>{
        
         return(
@@ -38,11 +59,13 @@ function Product(props){
                 <Link className="productContainer__Link" to={"#"}>
                   <img  src={data.image.url} alt={data.altImageUrl}></img>
                 </Link>
-                <h5>djdj <CheckCircleIcon/></h5>
+                <h5>{data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1]}
+                   <CheckCircleIcon style={{fontSize: 10 + 'px',color:'blue'}}/></h5>
                 <p>{data.productTitle}</p>
                 <div>
                   <span>{data.prices[0].regularPrice.minPrice}</span>
-                  <span><Link className="productContainer__Link__cart" to={"#"}><ShoppingCartIcon/></Link></span>
+                  <span style={{color:'red'}} onClick={()=>{addToCart(data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1],
+                    data.productTitle,data.image.url,data.availableColr,data.prices[0].regularPrice.minPrice)}} ><ShoppingCartIcon/></span>
                 </div>
               </li>
         )

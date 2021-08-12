@@ -97,7 +97,7 @@ function LogoContainer(props){
                         </Link>  
                     </li>
                     <li className="LogoContainer__dropDown__item"> 
-                        <Link   to={`/home/${id}/CartPurchase`} id="LogoContainer__dropDown__item__link">
+                        <Link   to={`/home/CartPurchase`} id="LogoContainer__dropDown__item__link">
                             Cart Purchase
                         </Link>  
                     </li>

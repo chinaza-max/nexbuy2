@@ -39,7 +39,9 @@
 
 #DetailSliderContainer {
   overflow: hidden;
-  height: 420px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   position: relative;
   margin: 0 auto;
   width: 96%;
@@ -49,10 +51,12 @@
   list-style: none;
 }
 
-#DetailSliderContainer #DetailSliderContainer__slides {
+#DetailSliderContainer .DetailSliderContainer__slides {
   margin-top: 90px;
-  width: 300%;
-  height: 300px;
+  width: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   -webkit-transition: 2s ease;
   transition: 2s ease;
   display: -webkit-box;
@@ -65,14 +69,14 @@
   position: relative;
 }
 
-#DetailSliderContainer #DetailSliderContainer__slides li img {
+#DetailSliderContainer .DetailSliderContainer__slides li img {
   width: 100%;
-  height: 100%;
+  height: 300px;
 }
 
 .DetailSliderContainer__slides__dot {
   position: absolute;
-  bottom: 10px;
+  bottom: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,8 +96,8 @@
 }
 
 .DetailSliderContainer__slides__dots {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 100px;
   margin: 0 6px;
   display: inline-block;
@@ -106,6 +110,15 @@
 
 .DetailSliderContainer__slides_slide {
   width: 100%;
+}
+
+.title {
+  margin-top: 15px;
+}
+
+.title p {
+  display: inline;
+  color: #ED3137;
 }
 
 #DetailBodyContainer {
@@ -122,7 +135,7 @@
   display: inline;
 }
 
-#DetailBodyContainer__ul {
+.DetailBodyContainer__ul {
   margin-top: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -140,11 +153,11 @@
   height: auto;
 }
 
-#DetailBodyContainer__ul li {
+.DetailBodyContainer__ul li {
   margin-bottom: 10px;
 }
 
-#DetailBodyContainer__ul__li1 {
+.DetailBodyContainer__ul__li1 {
   width: 350px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,7 +173,7 @@
   height: 60px;
 }
 
-#DetailBodyContainer__ul__li1 #DetailBodyContainer__ul__li1__span1 {
+.DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span1 {
   background-color: #ED3137;
   height: 38px;
   width: 66px;
@@ -169,15 +182,15 @@
   border-top-left-radius: 5px;
 }
 
-#DetailBodyContainer__ul__li1 #DetailBodyContainer__ul__li1__span1 h3 {
+.DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span1 h3 {
   text-align: center;
 }
 
-#DetailBodyContainer__ul__li1 #DetailBodyContainer__ul__li1__span2 {
+.DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span2 {
   height: 38px;
 }
 
-#DetailBodyContainer__ul__li1 #DetailBodyContainer__ul__li1__span2 input {
+.DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span2 input {
   height: 96%;
   width: 80%;
   border: 1px solid #ED3137;
@@ -186,25 +199,27 @@
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   margin-left: -5px;
+  font-size: 29px;
+  padding-left: 5px;
 }
 
-#DetailBodyContainer__ul__li1 #DetailBodyContainer__ul__li1__span2 input:focus {
+.DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span2 input:focus {
   outline: none;
 }
 
-#DetailBodyContainer__ul__li1 span h3 {
+.DetailBodyContainer__ul__li1 span h3 {
   color: #FFFFFF;
 }
 
-#DetailBodyContainer__ul__li2 {
+.DetailBodyContainer__ul__li2 {
   padding-left: 12px;
 }
 
-#DetailBodyContainer__ul__li3 {
+.DetailBodyContainer__ul__li3 {
   padding-left: 12px;
 }
 
-#color {
+.color {
   width: 110px;
   height: 55px;
   border: none;
@@ -217,7 +232,7 @@
   color: #696767;
 }
 
-#size {
+.size {
   width: 95px;
   height: 55px;
   border: none;
@@ -230,7 +245,7 @@
   color: #696767;
 }
 
-#num {
+.num {
   width: 95px;
   height: 55px;
   border: none;
@@ -394,13 +409,15 @@
     margin: 0 auto;
     width: 90%;
   }
+  .DetailSliderContainer__slides__dot {
+    position: absolute;
+    bottom: 130px;
+  }
 }
 
 #CartContainer {
   width: 100vw;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 100vh;
   overflow-y: scroll;
   min-width: 275px;
 }
@@ -408,6 +425,7 @@
 #CartContentContainer {
   margin: 0 auto;
   width: 96%;
+  padding-bottom: 20px;
   height: 900px;
   margin-top: 100px;
   max-width: 768px;

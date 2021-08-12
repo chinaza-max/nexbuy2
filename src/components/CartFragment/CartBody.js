@@ -16,7 +16,7 @@ const CartBody=(props)=>{
             <div id="CartContainer">
                <CartNav title={HeaderTitle} history={props.history}/>
                <CartContent/>
-               <Footer/>
+               <Footer home={3}  history={props.history}/>
             </div>
     )
 }

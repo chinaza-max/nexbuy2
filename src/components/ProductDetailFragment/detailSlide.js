@@ -48,7 +48,7 @@ function showslide(){
         slideIndex=index
     }
     useEffect(()=>{
-        interval=window.setInterval(()=>{ showslide()},5000)
+        interval=window.setInterval(()=>{ showslide()},2000)
         let dots=document.querySelectorAll(".DetailSliderContainer__slides__dot span");
         let slide=document.querySelectorAll(".DetailSliderContainer__slides_slide");
         setDots(dots)
