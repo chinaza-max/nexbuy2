@@ -1,4 +1,4 @@
-import {Fragment,useState,useEffect} from 'react';
+/*import {Fragment,useState,useEffect} from 'react';
 import beauty1 from "../../assets/beauty2.png";
 import beauty2 from "../../assets/beauty1.png";
 
@@ -79,4 +79,4 @@ function showslide(){
         </Fragment>
     )
 }
-export default DetailSlide;
+export default DetailSlide;*/

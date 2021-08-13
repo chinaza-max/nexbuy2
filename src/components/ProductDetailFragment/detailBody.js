@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import {Fragment,useState,useEffect} from 'react';
-import beauty1 from "../../assets/beauty2.png";
-import beauty2 from "../../assets/beauty1.png";
+import {CircularIndeterminate,SimpleAlerts} from "../icons";
+
 
 function DetailBody(){
    
     const[styleFor__slides,setStyleFor__slides]=useState()
     const[cartToPurchase,setCartToPurchase]=useState([])
     const[totalAmount,setTotalAmount]=useState()
+    let[emptyMessage,setEmptyMessage]=useState();
     const[dots,setDots]=useState()
     const[slide,setSlide]=useState()
     let slideIndex=0;
@@ -76,17 +77,20 @@ function DetailBody(){
       
         
         setSlide(slide)
-        let datas=JSON.parse(localStorage.getItem('data'))
+        let datas=JSON.parse(window.localStorage.getItem('data'))
         calTotalAmount()
         if(datas){
             setCartToPurchase(datas)
             setStyleFor__slides({"width":`${datas.length}00%`})
         }
+        else if(datas==null){
+            setEmptyMessage("No item to purchase ")
+        }
      
     },[totalAmount])
     let cartsToBuy=cartToPurchase.map((data,index)=>{
                         return(
-                            <li className="DetailSliderContainer__slides_slide" key={data.url}>
+                            <li className="DetailSliderContainer__slides_slide" key={index}>
                                 <img src={data.url}  alt="..."/>
                                 <h4 className="title">{data.title}<p>-LEFT</p> </h4>
                                 <p>{data.description}</p>
@@ -131,20 +135,19 @@ function DetailBody(){
                 <div id="DetailSliderContainer" >
                    
                     <ul className="DetailSliderContainer__slides" style={styleFor__slides}>
-                                {cartsToBuy}
-                            
+                                {cartsToBuy!=""? cartsToBuy:""}
                     </ul>
                     <div className="DetailSliderContainer__slides__dot  DetailSliderContainer__slides__dots-M">
                         {cartToPurchase.map((data,index)=>{
                             return(
-                            <span className="DetailSliderContainer__slides__dots" onClick={()=>currentslide(index)} key={data.url}></span>
+                            <span className="DetailSliderContainer__slides__dots" onClick={()=>currentslide(index)} key={index}></span>
                         )   })}
                     </div>
 
-                   
-                </div>
-                {cartToPurchase ?
-                        
+        
+                </div>  
+                {cartToPurchase!=""?
+
                         <div id="DetailBodyContainer">
                              <ul id="DetailBodyContainer__Delivery">
                                  
@@ -187,7 +190,7 @@ function DetailBody(){
                                 <li>NGN {totalAmount}</li>
                             </ul>
                         </div>
-                :""}
+                : emptyMessage? <SimpleAlerts emptyMessagep={emptyMessage}/>:<CircularIndeterminate/>}                
         </Fragment>
     )
 }

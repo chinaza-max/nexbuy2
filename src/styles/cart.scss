@@ -28,12 +28,13 @@ $NavItemColor:#373737;
     height: 100vh;
     overflow-y: scroll;
     min-width: $DeviceMinWidth;
-   
+    
 }
 #CartContentContainer{
     @include CenterElement(96%);
     padding-bottom: 20px;
-    height: 900px;
+    height: auto;
+    margin-bottom: 30px;
     margin-top: 100px;
     max-width: 768px;
     .CartContentContainer__items{
@@ -42,6 +43,7 @@ $NavItemColor:#373737;
 
     }
 }
+
 .CartContentContainer__items__section1{
     @include flexCenter();
     justify-content: space-evenly;

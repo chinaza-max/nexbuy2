@@ -1,5 +1,5 @@
 import {Fragment,useEffect,useState} from 'react';
-import {HomeIcon,ShopIcon,ShoppingCartIcon,AccountCircleIcon} from "../icons";
+import {HomeIcon,ShopIcon,CustomizedBadges,AccountCircleIcon} from "../icons";
 import { Link } from "react-router-dom";
 
 function Footer(props){
@@ -30,7 +30,7 @@ function Footer(props){
                     </li>
                     <li>
                         <Link className={currentStyle === 3 ? "FooterContainer__nav__HomeLink active" : "FooterContainer__nav__HomeLink"} to={"/Home/cart"}>
-                            <span><ShoppingCartIcon/></span> 
+                            <span><CustomizedBadges countP={props.cartCountP}/></span> 
                             <span>CART</span> 
                         </Link>
                     </li>

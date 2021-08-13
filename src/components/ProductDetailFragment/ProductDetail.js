@@ -4,7 +4,7 @@ import DetailSlide from "./detailSlide";
 import DetailBody from "./detailBody";
 //  <DetailSlide/>
 const ProductDetail=(props)=>{
-    let title="title"
+    let title="cart purchase"
     return(
             <div id="DetailContainer">
                 <Nav2 title={title} history={props.history}/>

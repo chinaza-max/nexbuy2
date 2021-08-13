@@ -14,10 +14,15 @@ class Home extends React.Component{
 constructor({match}){
     super()
     this.filteredTextFun=this.filteredTextFun.bind(this)
+    this.cartCount=this.cartCount.bind(this)
     this.mainFillerFunc=this.mainFillerFunc.bind(this)
-    this.state={filteredText:'AgeAppropriate'}
+    this.state={filteredText:'AgeAppropriate',cartCount:0}
+    
     this.match=match
     this.color="red"
+    }
+    cartCount(value){
+        this.setState({cartCount:value})
     }
     filteredTextFun(value){
         this.setState({filteredText:value})
@@ -41,8 +46,8 @@ constructor({match}){
                     <BodyNav/>
                 </header>
                 <BodySlide/>
-                <Product  searchStringP={this.state.filteredText}/>
-                <Footer home={0} history={this.props.history}/>
+                <Product  searchStringP={this.state.filteredText} cartCountP={this.cartCount}/>
+                <Footer home={0} history={this.props.history}  cartCountP={this.state.cartCount}/>
         </div>
         )
     }
