@@ -79,8 +79,9 @@ function Product(props){
    
     },[error])
     let ProductsContent=Products.map((data,index)=>{
+                console.log(props.searchStringP)
                 console.log(data.productTitle.indexOf(props.searchStringP)===-1)
-                if(data.productTitle.toLowerCase().indexOf(props.searchStringP.toLowerCase())===-1){
+                if(data.productTitle.toLowerCase().indexOf(props.searchStringP.toLowerCase())===-1&&props.searchStringP!==' '){
                   return ' '
                 }
                 else{

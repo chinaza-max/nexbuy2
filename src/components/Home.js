@@ -16,7 +16,7 @@ constructor({match}){
     this.filteredTextFun=this.filteredTextFun.bind(this)
     this.cartCount=this.cartCount.bind(this)
     this.mainFillerFunc=this.mainFillerFunc.bind(this)
-    this.state={filteredText:'AgeAppropriate',cartCount:0}
+    this.state={filteredText:'',cartCount:0}
     
     this.match=match
     this.color="red"
