@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
-import Nav2 from "../ProductDetailFragment/Nav2";
-import DetailSlide from "./detailSlide";
+import Nav2 from "./Nav2";
 import DetailBody from "./detailBody";
+import "../../styles/cartPurchase.css"
+
 //  <DetailSlide/>
 const ProductDetail=(props)=>{
     let title="cart purchase"

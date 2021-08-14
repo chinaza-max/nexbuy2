@@ -56,7 +56,6 @@ function LogoContainer(props){
     }
     function filteredTextHolder(e){
         props.filteredTextFunP(e.target.value)
-        console.log(e.target.value)
     }
     useEffect(()=>{
         document.getElementById("LogoContainer__cancel").addEventListener("click",toggle)
@@ -67,51 +66,52 @@ function LogoContainer(props){
     return(
         <Fragment >
             <div className="LogoContainer LogoContainer-M">
-                <h2>NEXAPP  <LocalMallIcon /> </h2>
-
-                
-                <div className={classes.search} className="search">
-                    <div className={classes.searchIcon}>
-                    <SearchIcon />
+            
+                    <h2>NEXAPP  <LocalMallIcon/> </h2>
+                    <div className={classes.search} className="search">
+                        <div className={classes.searchIcon}>
+                        <SearchIcon />
+                        </div>
+                        <InputBase
+                            placeholder="Search…"
+                            classes={{
+                            root: classes.inputRoot,
+                            input: classes.inputInput,
+                            }}
+                            inputProps={{ 'aria-label': 'search' }}
+                            onChange={filteredTextHolder}
+                        />
                     </div>
-                    <InputBase
-                        placeholder="Search…"
-                        classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                        }}
-                        inputProps={{ 'aria-label': 'search' }}
-                        onChange={filteredTextHolder}
-                    />
-                </div>
-                
-
+           
 
                 <span className="LogoContainer__menu" id="bar__1"></span>
                 <span className="LogoContainer__menu" id="bar__2"></span>
                 <span className="LogoContainer__menu" id="bar__3"></span>
                 
-                <ul  className="LogoContainer__dropDown LogoContainer__dropDown-M" id="LogoContainer__dropDown">
-                    <li className="LogoContainer__dropDown__item">
-                        <Link   to={`/`} id="LogoContainer__dropDown__item__link" >
-                            Home
-                        </Link>  
-                    </li>
-                    <li className="LogoContainer__dropDown__item"> 
-                        <Link   to={`/home/CartPurchase`} id="LogoContainer__dropDown__item__link">
-                            Cart Purchase
-                        </Link>  
-                    </li>
-                    <li className="LogoContainer__dropDown__item">
-                        <Link  to={"/Home/cart"} id="LogoContainer__dropDown__item__link">
-                            Cart 
-                        </Link>  
-                    </li>
-                    <div className="LogoContainer__cancel" id="LogoContainer__cancel">
-                        <span className="LogoContainer__cancel__cancel__bar1 cancel_1"></span>
-                        <span className="LogoContainer__cancel__cancel__bar2 cancel_2"></span>
-                    </div>
-                </ul>
+                <nav role="navigation">
+                    <ul  className="LogoContainer__dropDown LogoContainer__dropDown-M" id="LogoContainer__dropDown" >
+                        <li className="LogoContainer__dropDown__item">
+                            <Link   to={`/`} id="LogoContainer__dropDown__item__link">
+                                Home
+                            </Link>  
+                        </li>
+                        <li className="LogoContainer__dropDown__item"> 
+                            <Link   to={`/home/CartPurchase`} id="LogoContainer__dropDown__item__link">
+                                Cart Purchase
+                            </Link>  
+                        </li>
+                        <li className="LogoContainer__dropDown__item">
+                            <Link  to={"/Home/cart"} id="LogoContainer__dropDown__item__link">
+                                Cart 
+                            </Link>  
+                        </li>
+                        <div className="LogoContainer__cancel" id="LogoContainer__cancel">
+                            <span className="LogoContainer__cancel__cancel__bar1 cancel_1"></span>
+                            <span className="LogoContainer__cancel__cancel__bar2 cancel_2"></span>
+                        </div>
+                    </ul>
+                </nav>
+             
               
             </div>
            

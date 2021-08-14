@@ -76,7 +76,7 @@
 
 .DetailSliderContainer__slides__dot {
   position: absolute;
-  bottom: 220px;
+  bottom: 34%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -414,4 +414,4 @@
     bottom: 130px;
   }
 }
-/*# sourceMappingURL=detail.css.map */
+/*# sourceMappingURL=cartPurchase.css.map */

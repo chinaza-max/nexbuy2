@@ -41,12 +41,15 @@ constructor({match}){
 
         return(
             <div className="body">
-                <header>
+                <header role="banner">
                     <LogoContainer filteredTextFunP={this.filteredTextFun} history={this.props.history}/>
                     <BodyNav/>
                 </header>
                 <BodySlide/>
-                <Product  searchStringP={this.state.filteredText} cartCountP={this.cartCount}/>
+                <main role="main">
+                     <Product  searchStringP={this.state.filteredText} cartCountP={this.cartCount}/>
+                </main>
+                
                 <Footer home={0} history={this.props.history}  cartCountP={this.state.cartCount}/>
         </div>
         )

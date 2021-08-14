@@ -45,7 +45,7 @@ function CartContent(props){
           })
           .then((willDelete) => {
             try {
-                localStorage.setItem('data', JSON.stringify(cartContent))//saves to the database, "key", "value"
+                window.localStorage.setItem('data', JSON.stringify(cartContent))//saves to the database, "key", "value"
               } catch (e) {
                 if (e) {
                     //QUOTA_EXCEEDED_ERR

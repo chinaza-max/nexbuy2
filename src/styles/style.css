@@ -76,7 +76,7 @@
 
 .DetailSliderContainer__slides__dot {
   position: absolute;
-  bottom: 220px;
+  bottom: 31%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -722,8 +722,8 @@ header {
 .FooterContainer {
   height: 45px;
   width: 100vw;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  bottom: 0;
   min-width: 275px;
   -webkit-box-shadow: 4px 0px 20px #bdbcbc;
           box-shadow: 4px 0px 20px #bdbcbc;
@@ -1006,6 +1006,7 @@ header {
   background-color: #FFFFFF;
   margin: 0 auto;
   margin-top: 10px;
+  padding-bottom: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

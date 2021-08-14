@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import CartNav from '../ProductDetailFragment/Nav2';
+import CartNav from '../CartPurchaseFragment/Nav2';
 import Footer from "../homeFragment/footer";
 import CartContent from "./CartContent"
 import "../../styles/cart.css";

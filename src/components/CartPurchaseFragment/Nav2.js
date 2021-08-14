@@ -1,6 +1,6 @@
 import {Fragment,useState,useEffect} from 'react';
 import {ArrowBackIcon} from "../icons"
-import "../../styles/detail.css"
+ 
 
 
 function Nav2(props){

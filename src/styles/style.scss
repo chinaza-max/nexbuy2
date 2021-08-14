@@ -16,7 +16,7 @@ $DeviceMinWidth:275px;
     margin: 0 auto;
     width: $Width;
 }
-@import"./detail";
+@import"./cartPurchase";
 @import"./cart";
 *{
     margin: 0;
@@ -92,8 +92,8 @@ header{
 .FooterContainer{
     height: 45px;
     width: 100vw;
-    position: absolute;
-    bottom: 0px;
+    position: fixed;
+    bottom: 0;
     min-width: $DeviceMinWidth;
     box-shadow: 4px 0px 20px #bdbcbc;
 }
@@ -300,6 +300,7 @@ header{
     background-color:$FooterBackgroundColor1;
     margin: 0 auto;
     margin-top: 10px;
+    padding-bottom:40px;
     @include flexCenter();
     flex-wrap: wrap;
     li{
