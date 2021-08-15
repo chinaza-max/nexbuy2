@@ -6,7 +6,6 @@ import {LocalMallIcon} from "../icons"
 import { alpha, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
@@ -46,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
     },
   
   }));
+  
+
   
 function LogoContainer(props){
     const {id}=useParams()

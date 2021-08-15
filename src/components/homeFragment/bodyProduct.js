@@ -2,40 +2,37 @@ import {Fragment,useState,useEffect} from 'react';
 import { Link } from "react-router-dom";
 import {ShoppingCartIcon,CheckCircleIcon,CircularIndeterminate,DescriptionAlerts} from "../icons";
 import axios from "axios"
-
+// <CheckCircleIcon style={{fontSize: 10 + 'px',color:'blue'}}/>
 
 
 function Product(props){
     const[Products,setProducts]=useState([])
     const[error,setError]=useState()
   
-    function addToCart(title,description,url,color,amount,index){
+    function addToCart(title,description,url,color,amount,index,altUrl){
       let cartIcons=document.querySelectorAll(".cartIcons")
       cartIcons[index].style.display='none';
-     
-      //[index].classList.add("removeToCart")
       //localStorage.removeItem('data')
-      let datas= JSON.parse(window.localStorage.getItem('data'))
-      //console.log(datas)
+      let datas= JSON.parse(localStorage.getItem('data'))
       if(datas){
        // console.log("chinaza")
-        datas.push({title,description,url,color,amount})
-        window.localStorage.setItem('data', JSON.stringify(datas))
+        datas.push({title,description,url,color,amount,altUrl})
+        localStorage.setItem('data', JSON.stringify(datas))
         props.cartCountP(datas.length)
       }
       else{
           datas=[];
-          datas.push({title,description,url,color,amount})
-          window.localStorage.setItem('data', JSON.stringify(datas))
+          datas.push({title,description,url,color,amount,altUrl})
+          localStorage.setItem('data', JSON.stringify(datas))
       }
-      datas= JSON.parse(window.localStorage.getItem('data'))
+      datas= JSON.parse(localStorage.getItem('data'))
      // console.log(datas)
     }
 
      useEffect(async()=>{  
       const controller = new AbortController()
       const signal = controller.signal
-      let datas=JSON.parse(window.localStorage.getItem('store'))
+      let datas=JSON.parse(localStorage.getItem('store'))
       if(datas){
           setProducts(datas)
       }
@@ -54,7 +51,7 @@ function Product(props){
           axios.request(options).then(function (response) {
             
             try {
-              window.localStorage.setItem('store', JSON.stringify(response.data.payload.products))//saves to the database, "key", "value"
+              localStorage.setItem('store', JSON.stringify(response.data.payload.products))//saves to the database, "key", "value"
               datas=JSON.parse(window.localStorage.getItem('store'))
               if(datas){
                 setProducts(datas)
@@ -79,9 +76,8 @@ function Product(props){
    
     },[error])
     let ProductsContent=Products.map((data,index)=>{
-                console.log(props.searchStringP)
-                console.log(data.productTitle.indexOf(props.searchStringP)===-1)
-                if(data.productTitle.toLowerCase().indexOf(props.searchStringP.toLowerCase())===-1&&props.searchStringP!==' '){
+                
+                if(data.productTitle.toLowerCase().indexOf(props.searchStringP.toLowerCase())===-1){
                   return ' '
                 }
                 else{
@@ -90,13 +86,14 @@ function Product(props){
                       <Link className="productContainer__Link" to={"#"}>
                         <img  src={data.image.url} alt={data.altImageUrl}></img>
                       </Link>
-                      <h5>{data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1]}
-                         <CheckCircleIcon style={{fontSize: 10 + 'px',color:'blue'}}/></h5>
+                      <h5>{data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1]+" "}
+                          <input type="checkbox" className="check" />
+                         </h5>
                       <p>{data.productTitle}</p>
                       <div>
-                        <span>{data.prices[0].regularPrice.minPrice}</span>
+                        <span>NGN{" "+data.prices[0].regularPrice.minPrice}</span>
                         <span  style={{color:'red'}} onClick={()=>{addToCart(data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1],
-                          data.productTitle,data.image.url,data.availableColr,data.prices[0].regularPrice.minPrice,index)}}> <ShoppingCartIcon className="cartIcons"/></span>
+                          data.productTitle,data.image.url,data.availableColr,data.prices[0].regularPrice.minPrice,index,data.altImageUrl)}}> <ShoppingCartIcon className="cartIcons"/></span>
                       </div>
                     </li>
                   )

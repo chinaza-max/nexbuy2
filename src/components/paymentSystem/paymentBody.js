@@ -1,11 +1,11 @@
 import React from 'react';
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 
-export default function App() {
+function App(props) {
   const config = {
-    public_key: 'FLWPUBK-**************************-X',
+    public_key: "FLWPUBK-7922ff07110f011e4ae4211f9b172c2e-X",
     tx_ref: Date.now(),
-    amount: 100,
+    amount: props.totalAmountP,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd',
     customer: {
@@ -14,7 +14,7 @@ export default function App() {
       name: 'joel ugwumadu',
     },
     customizations: {
-      title: 'my Payment Title',
+      title: 'NEXBUY',
       description: 'Payment for items in cart',
       logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
     },
@@ -24,9 +24,7 @@ export default function App() {
 
   return (
     <div className="App">
-     <h1>Hello Test user</h1>
-
-      <button
+      <button style={{height:props.heightP,borderRadius:props.borderP}}
         onClick={() => {
           handleFlutterPayment({
             callback: (response) => {
@@ -37,8 +35,9 @@ export default function App() {
           });
         }}
       >
-        Payment with React hooks
+        Payment 
       </button>
     </div>
   );
 }
+export default App;

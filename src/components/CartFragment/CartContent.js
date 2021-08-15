@@ -1,20 +1,25 @@
-import { blue } from '@material-ui/core/colors';
 import {Fragment ,useEffect,useState} from 'react';
 import { Link,useParams } from "react-router-dom";
-import beauty2 from "../../assets/beauty1.png";
-import {DeleteIcon,CheckCircleIcon,CircularIndeterminate,SimpleAlerts} from "../icons";
+import {DeleteIcon,CircularIndeterminate,SimpleAlerts} from "../icons";
+import Button from  "../paymentSystem/paymentBody"
 import swal from 'sweetalert';
 
 function CartContent(props){
     let[num,setnum]=useState(1);
     let[cartContent,setCartContent]=useState([]);
     let[emptyMessage,setEmptyMessage]=useState();
-
+    let[totalAmount,setTotalAmount]=useState();
+    
+    function getTotalAmount(index){
+       
+     
+    
+       
+    }
     function decrease(index,amount){
-        
         let elementToDisplayNum=document.querySelectorAll(".itemNumber")[index]
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[index]
-        let number =parseInt(elementToDisplayNum.innerHTML)
+        let number=parseInt(elementToDisplayNum.innerHTML)
        
         if(number!=1){
             number--;
@@ -27,8 +32,7 @@ function CartContent(props){
         let elementToDisplayNum=document.querySelectorAll(".itemNumber")[index]
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[index]
         let number =parseInt(elementToDisplayNum.innerHTML)
-        console.log()
-        if(number!=0){
+        if(number!==0){
             number++;
             elementToDisplayNum.innerHTML=number
             elementToDisplayAmount.innerHTML=number*amount
@@ -45,7 +49,13 @@ function CartContent(props){
           })
           .then((willDelete) => {
             try {
-                window.localStorage.setItem('data', JSON.stringify(cartContent))//saves to the database, "key", "value"
+                let datas= JSON.parse(localStorage.getItem('data'))
+                let NewcartContent=datas.filter((obj)=>{
+                    return title!==obj.title
+                })
+                setCartContent(NewcartContent)
+                localStorage.setItem('data', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
+                props.cartCountUpdateP()
               } catch (e) {
                 if (e) {
                     //QUOTA_EXCEEDED_ERR
@@ -53,7 +63,7 @@ function CartContent(props){
                 }
               }
          
-            setCartContent(cartContent)
+           
             if (willDelete) {
               swal("Poof! Your imaginary file has been deleted!", {
                 icon: "success",
@@ -76,8 +86,7 @@ function CartContent(props){
     }*/
 
     useEffect(()=>{
-        let datas= JSON.parse(window.localStorage.getItem('data'))
-        console.log( typeof( datas))
+        let datas= JSON.parse(localStorage.getItem('data'))
         if(datas){
             setCartContent(datas)
         }
@@ -91,11 +100,11 @@ function CartContent(props){
             <div className="CartContentContainer__items" key={data.url+index}>
             <ul className="CartContentContainer__items__section1">
                 <li className="CartContentContainer__items__section1__img">
-                    <img src={data.url}></img>
+                    <img src={data.url} alt={data.altUrl}></img>
             </li>
                 <li className="CartContentContainer__items__section1__text">
                     <ul className="CartContentContainer__items__section1__text__ul1">
-                        <li>{data.title} <CheckCircleIcon style={{fontSize: 10 + 'px',color:'blue'}}/></li>
+                        <li>{data.title+" "}  <input type="checkbox" className="check" />  </li>
                         <li> 
                             <DeleteIcon onClick={()=>deleteFile(data.title)}/>
                         </li>
@@ -122,8 +131,8 @@ function CartContent(props){
                 </li>
             </ul>
             <ul  className="CartContentContainer__items__section2">
-                <li ><Link  className="CartContentContainer__items__section2__buynow" to={""}>BUY NOW</Link></li>
-                <li ><Link  className="CartContentContainer__items__section2__CONFIRM"to={""}>CONFIRM ARRIVAL</Link></li>
+                <li><Button  className="DetailBodyContainer__check__link"  totalAmountP={parseInt(document.querySelectorAll(".amountSingleItem")[index].innerHTML)}  heightP={"48px"} borderP={12} /></li>
+                <li ><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
             </ul>
         </div>
         )

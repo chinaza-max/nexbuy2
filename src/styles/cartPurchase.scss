@@ -218,6 +218,11 @@ $DeviceMinWidth:275px;
         text-align: center;
         line-height: 48px;
     }
+   
+}
+#CHECK{
+    background-color: blue;
+    color: $FooterBackgroundColor1;
 }
 .DetailBodyContainer__check__link{
     text-decoration: none;
@@ -225,6 +230,19 @@ $DeviceMinWidth:275px;
     font-size: 20px;
     width: 100%;
     height: 100%;
+    color: $LogoContainer;
+}
+.App button{
+    width: 100%;
+    font-size: 20px;
+    height: 55px;
+    background-color: transparent;
+    border: none;
+    background-color: $LogoContainer;
+    color: $FooterBackgroundColor1;
+}
+.App button:focus{
+   outline: none
 }
 #DetailBodyContainer__DeliveryFee{
     @include ArrangeDeliverySection();

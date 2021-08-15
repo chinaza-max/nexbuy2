@@ -7,11 +7,20 @@ import "../../styles/cart.css";
 
 
 const CartBody=(props)=>{
-    const[HeaderTitle,setHeaderTitle]=useState()
+    const[HeaderTitle,setHeaderTitle]=useState("My cart")
     const[cartCount,setCartCount]=useState()
+    function cartCountUpdate(){
+    
+        let datas= JSON.parse(localStorage.getItem('data'))
+        if(datas){
+            setCartCount(datas.length)
+        }
+        else if(datas==null){
+            setCartCount(0)
+        }
+    }
     useEffect(async()=>{  
-        let datas= JSON.parse(window.localStorage.getItem('data'))
-        console.log( typeof( datas))
+        let datas= JSON.parse(localStorage.getItem('data'))
         if(datas){
             setCartCount(datas.length)
         }
@@ -22,7 +31,7 @@ const CartBody=(props)=>{
     return(
             <div id="CartContainer">
                <CartNav title={HeaderTitle} history={props.history}/>
-               <CartContent/>
+               <CartContent cartCountUpdateP={cartCountUpdate}/>
                <Footer home={3}  history={props.history} cartCountP={cartCount}/>
             </div>
     )
