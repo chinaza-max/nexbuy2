@@ -131,7 +131,7 @@ function CartContent(props){
                 </li>
             </ul>
             <ul  className="CartContentContainer__items__section2">
-                <li><Button  className="DetailBodyContainer__check__link"  totalAmountP={parseInt(document.querySelectorAll(".amountSingleItem")[index].innerHTML)}  heightP={"48px"} borderP={12} /></li>
+                <li><Button  className="DetailBodyContainer__check__link"  totalAmountP={data.amount}  heightP={"48px"} borderP={12} /></li>
                 <li ><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
             </ul>
         </div>
