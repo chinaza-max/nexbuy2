@@ -48,7 +48,7 @@ function Product(props){
             url: 'https://kohls.p.rapidapi.com/products/list',
             params: {limit: '24', offset: '1', dimensionValueID: 'AgeAppropriate:Teens'},
             headers: {
-              'x-rapidapi-key':process.env.REACT_APP_API_KEY,
+              'x-rapidapi-key':"69f6baf540msh59fede3476ee66dp18b5bajsn4a3041a37f2f",
               'x-rapidapi-host': 'kohls.p.rapidapi.com'
             }
           ,source

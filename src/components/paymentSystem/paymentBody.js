@@ -7,14 +7,11 @@ function App(props) {
   let[config,setConfig]=useState(); 
   let history = useHistory();
 
-
   function UpdateAmount(){
     if(props.totalAmountP===undefined){
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[props.indexP]
-        console.log(process.env.REACT_APP_FLUTTERWAVE_KEY)
-        console.log("process.env.REACT_APP_FLUTTERWAVE_KEY")
         setConfig({
-          public_key: process.env.REACT_APP_FLUTTERWAVE_KEY,
+          public_key: "FLWPUBK_TEST-13df3e9d9f08d0f5626aae7b1fd76e19-X",
           tx_ref: Date.now(),
           amount: parseInt(elementToDisplayAmount.innerHTML),
           currency: 'NGN',
@@ -26,14 +23,14 @@ function App(props) {
           },
           customizations: {
             title: 'NEXBUY',
-            description: `Payment for${" "+props.itemNameP}`,
+            description: 'Payment for all items in cart',
             logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
           },
         })
     }
     else{
           setConfig({
-            public_key:process.env.REACT_APP_FLUTTERWAVE_KEY,
+            public_key: "FLWPUBK_TEST-13df3e9d9f08d0f5626aae7b1fd76e19-X",
             tx_ref: Date.now(),
             amount: props.totalAmountP,
             currency: 'NGN',
@@ -45,7 +42,7 @@ function App(props) {
             },
             customizations: {
               title: 'NEXBUY',
-              description:"Payment for all item in cart" ,
+              description: `Payment of ${props.itemNameP}`,
               logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
             },
           })
@@ -55,7 +52,9 @@ function App(props) {
   function checkPaidItem(){
     if(props.itemNameP!==undefined){
       document.querySelectorAll(".check")[props.indexP].checked=true
-    }   
+    }
+
+     
   }
   const handleFlutterPayment = useFlutterwave(config);
 
