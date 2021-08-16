@@ -11,7 +11,7 @@ function App(props) {
     if(props.totalAmountP===undefined){
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[props.indexP]
         setConfig({
-          public_key: "FLWPUBK_TEST-13df3e9d9f08d0f5626aae7b1fd76e19-X",
+          public_key: process.env.REACT_APP_FLUTTERWAVE_KEY,
           tx_ref: Date.now(),
           amount: parseInt(elementToDisplayAmount.innerHTML),
           currency: 'NGN',
@@ -30,7 +30,7 @@ function App(props) {
     }
     else{
           setConfig({
-            public_key: "FLWPUBK_TEST-13df3e9d9f08d0f5626aae7b1fd76e19-X",
+            public_key: process.env.REACT_APP_FLUTTERWAVE_KEY,
             tx_ref: Date.now(),
             amount: props.totalAmountP,
             currency: 'NGN',

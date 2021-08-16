@@ -17,7 +17,7 @@ function CartContent(props){
         if(number!=1){
             number--;
             elementToDisplayNum.innerHTML=number
-            elementToDisplayAmount.innerHTML=Math.round(number*amount)
+            elementToDisplayAmount.innerHTML=(number*amount).toFixed(2);
         }
         return num;
     }
@@ -28,7 +28,7 @@ function CartContent(props){
         if(number!==0){
             number++;
             elementToDisplayNum.innerHTML=number
-            elementToDisplayAmount.innerHTML=Math.round(number*amount)
+            elementToDisplayAmount.innerHTML=(number*amount).toFixed(2);
         }
     }
     function deleteFile(description){
