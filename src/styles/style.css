@@ -530,6 +530,10 @@
   width: 97%;
 }
 
+.CartContentContainer__items__section1__text .check {
+  background-color: green;
+}
+
 .CartContentContainer__items__section1__text .CartContentContainer__items__section1__text__ul1 li {
   color: #ED3137;
 }
