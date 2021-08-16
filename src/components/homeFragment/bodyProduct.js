@@ -38,7 +38,6 @@ function Product(props){
       const source = cancelToken.source();
       //localStorage.removeItem('store');
       let datas=JSON.parse(localStorage.getItem('store'))
-      console.log(process.env.REACT_APP_API_KEY )
       if(datas){
           setProducts(datas)
       }

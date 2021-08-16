@@ -19,7 +19,7 @@ function BodySlide(){
         interval=window.setInterval(()=>{
            showslide();
         
-        },3000)
+        },6000)
     }
     useEffect(()=>{
         Myloop();

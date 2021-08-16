@@ -97,9 +97,9 @@ function CartContent(props){
         return(
             <div className="CartContentContainer__items" key={data.url+index}>
             <ul className="CartContentContainer__items__section1">
-                <li className="CartContentContainer__items__section1__img">
+                <li className="CartContentContainer__items__section1__img" role="figure">
                     <img src={data.url} alt={data.altUrl}></img>
-            </li>
+                </li>
                 <li className="CartContentContainer__items__section1__text">
                     <ul className="CartContentContainer__items__section1__text__ul1">
                         <li>{data.title+" "}  <input type="checkbox" role="checkbox" aria-checked="false" className="check"/>  </li>
@@ -129,7 +129,7 @@ function CartContent(props){
                 </li>
             </ul>
             <ul  className="CartContentContainer__items__section2">
-                <li><Button indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.title}/></li>
+                <li><Button  role="button" aria-pressed="false"  indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.title}/></li>
                 <li><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
             </ul>
         </div>

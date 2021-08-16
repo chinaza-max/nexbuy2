@@ -96,7 +96,7 @@ function CartPurchaseDetail(){
     },[totalAmount])
     let cartsToBuy=cartToPurchase.map((data,index)=>{
                         return(
-                            <li className="DetailSliderContainer__slides_slide" key={index}>
+                            <li className="DetailSliderContainer__slides_slide" key={index} role="figure">
                                 <img src={data.url}  alt={data.altUrl}/>
                                 <h4 className="title">{data.title}<p>-LEFT</p> </h4>
                                 <p>{data.description}</p>
@@ -183,7 +183,7 @@ function CartPurchaseDetail(){
                             </ul>
                             <ul id="DetailBodyContainer__check">
                                 <li><Link className="DetailBodyContainer__check__link" to={"#"} id="CHECK">CHECK</Link></li>
-                                <li><Button  className="DetailBodyContainer__check__link" numOfItemToBuyP={numOfItemToBuy} totalAmountP={totalAmount} heightP={"55px"} borderP={0}/></li>
+                                <li><Button  role="button" aria-pressed="false" numOfItemToBuyP={numOfItemToBuy} totalAmountP={totalAmount} heightP={"55px"} borderP={0}/></li>
                                 <li><Link  className="DetailBodyContainer__check__link"  to={"/Home/cart"} >TO CART</Link></li>
                             </ul>
                             <ul id="DetailBodyContainer__DeliveryFee">
