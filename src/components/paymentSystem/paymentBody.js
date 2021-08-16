@@ -32,7 +32,6 @@ function App(props) {
         })
     }
     else{
-        console.log( process.env.REACT_APP_FLUTTERWAVE_KEY)
           setConfig({
             public_key:process.env.REACT_APP_FLUTTERWAVE_KEY,
             tx_ref: Date.now(),
