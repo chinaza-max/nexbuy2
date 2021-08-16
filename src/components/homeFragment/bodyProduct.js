@@ -32,6 +32,7 @@ function Product(props){
      useEffect(async()=>{  
       const controller = new AbortController()
       const signal = controller.signal
+      localStorage.removeItem('store');
       let datas=JSON.parse(localStorage.getItem('store'))
       if(datas){
           setProducts(datas)
@@ -43,7 +44,7 @@ function Product(props){
             url: 'https://kohls.p.rapidapi.com/products/list',
             params: {limit: '24', offset: '1', dimensionValueID: 'AgeAppropriate:Teens'},
             headers: {
-              'x-rapidapi-key': `69f6baf540msh59fede3476ee66dp18b5bajsn4a3041a37f2f`,
+              'x-rapidapi-key':process.env.REACT_APP_API_KEY,
               'x-rapidapi-host': 'kohls.p.rapidapi.com'
             }
           ,signal
@@ -65,7 +66,7 @@ function Product(props){
     
           }).catch(function (error) {
               
-              // setError(JSON.stringify(error.response.data.message))
+             setError(JSON.stringify(error.response.data.message))
           });
           return function cleanUp(){
             controller.abort()
@@ -110,19 +111,3 @@ function Product(props){
 }
 export default Product;
 
-/*
-
-
-
-const funRef = useRef(null);
-
-//...
-
-useEffect(() => {
-    funRef.current = setInterval(() => {
-      refreshSave();
-    }, 3000);
-    return () => {
-     clearInterval(funRef.current);
-    };
-  }, []);*/ 

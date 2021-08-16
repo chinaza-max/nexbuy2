@@ -60,7 +60,7 @@ function App(props) {
           handleFlutterPayment({
             callback: (response) => {
                console.log(response);
-            
+                window.alert("payment succeful")
                 closePaymentModal() // this will close the modal programmatically
                 history.push('/')
                 //for updating cart
@@ -73,7 +73,6 @@ function App(props) {
                   })
                   localStorage.setItem('data', JSON.stringify(NewcartContent))
                 }else{
-                 
                   localStorage.removeItem('data');
                 }
                
