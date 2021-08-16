@@ -85,6 +85,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow-x: scroll;
 }
 
 .DetailSliderContainer__slides__dot span:hover {
@@ -192,7 +193,7 @@
 
 .DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span2 input {
   height: 96%;
-  width: 80%;
+  width: 50%;
   border: 1px solid #ED3137;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
@@ -280,6 +281,10 @@
 #chooseDelivery {
   background-color: transparent;
   border: none;
+}
+
+.deliverby {
+  font-size: 20px;
 }
 
 #DetailBodyContainer__Address {
@@ -538,6 +543,7 @@
 }
 
 .CartContentContainer__items__section1__text .CartContentContainer__items__section1__text__ul2 {
+  padding-top: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -562,22 +568,23 @@
 }
 
 .CartContentContainer__items__section1__text .CartContentContainer__items__section1__text__ul2 :nth-child(2) {
-  margin-left: 15px;
+  margin-left: 25px;
   color: #ED3137;
   width: 18px;
 }
 
 .CartContentContainer__items__section1__text .CartContentContainer__items__section1__text__ul2 :nth-child(3) {
-  margin-left: 15px;
+  margin-left: 25px;
 }
 
 .CartContentContainer__items__section1__text .CartContentContainer__items__section1__text__ul2 :nth-child(4) {
-  margin-left: 15px;
+  margin-left: 35px;
   color: #ED3137;
   width: 18px;
 }
 
 .CartContentContainer__items__section1__text__ul3 {
+  padding-top: 7px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

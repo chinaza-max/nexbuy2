@@ -102,7 +102,7 @@ function CartContent(props){
             </li>
                 <li className="CartContentContainer__items__section1__text">
                     <ul className="CartContentContainer__items__section1__text__ul1">
-                        <li>{data.title+" "}  <input type="checkbox" className="check" />  </li>
+                        <li>{data.title+" "}  <input type="checkbox" className="check"/>  </li>
                         <li> 
                             <DeleteIcon onClick={()=>deleteFile(data.description)}/>
                         </li>
@@ -110,7 +110,7 @@ function CartContent(props){
                     <p>{data.description} 
                     </p>
                     <ul  className="CartContentContainer__items__section1__text__ul2">
-                        <li ><h3>NGN  <span className="amountSingleItem">{data.amount}</span></h3></li>
+                        <li><h3>NGN  <span className="amountSingleItem">{data.amount}</span></h3></li>
                         <li onClick={()=>decrease(index,data.amount)}>-</li>
                         <li className="itemNumber">{num}</li>
                         <li onClick={()=>increase(index,data.amount)}>+</li>
@@ -129,7 +129,7 @@ function CartContent(props){
                 </li>
             </ul>
             <ul  className="CartContentContainer__items__section2">
-                <li><Button indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.description}/></li>
+                <li><Button indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.title}/></li>
                 <li><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
             </ul>
         </div>

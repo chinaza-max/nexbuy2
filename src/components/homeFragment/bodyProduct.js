@@ -1,13 +1,16 @@
 import {Fragment,useState,useEffect} from 'react';
 import { Link } from "react-router-dom";
-import {ShoppingCartIcon,CheckCircleIcon,CircularIndeterminate,DescriptionAlerts} from "../icons";
+import {ShoppingCartIcon,CircularIndeterminate,DescriptionAlerts} from "../icons";
 import axios from "axios"
+
 // <CheckCircleIcon style={{fontSize: 10 + 'px',color:'blue'}}/>
 
 
 function Product(props){
     const[Products,setProducts]=useState([])
     const[error,setError]=useState()
+    const cancelToken = axios.CancelToken;
+    const source = cancelToken.source();
 
     function addToCart(title,description,url,color,amount,index,altUrl){
       let cartIcons=document.querySelectorAll(".cartIcons")
@@ -16,6 +19,7 @@ function Product(props){
       let datas= JSON.parse(localStorage.getItem('data'))
       if(datas){
        // console.log("chinaza")
+       
         datas.push({title,description,url,color,amount,altUrl})
         localStorage.setItem('data', JSON.stringify(datas))
         props.cartCountP(datas.length)
@@ -30,15 +34,15 @@ function Product(props){
     }
 
      useEffect(async()=>{  
-      const controller = new AbortController()
-      const signal = controller.signal
-      localStorage.removeItem('store');
+      const cancelToken = axios.CancelToken;
+      const source = cancelToken.source();
+      //localStorage.removeItem('store');
       let datas=JSON.parse(localStorage.getItem('store'))
+    
       if(datas){
           setProducts(datas)
       }
       else if(datas===null){
-        console.log(process.env.REACT_APP_API_KEY)
           var options = {
             method: 'GET',
             url: 'https://kohls.p.rapidapi.com/products/list',
@@ -47,13 +51,13 @@ function Product(props){
               'x-rapidapi-key':process.env.REACT_APP_API_KEY,
               'x-rapidapi-host': 'kohls.p.rapidapi.com'
             }
-          ,signal
+          ,source
           };
           axios.request(options).then(function (response) {
             
             try {
               localStorage.setItem('store', JSON.stringify(response.data.payload.products))//saves to the database, "key", "value"
-              datas=JSON.parse(window.localStorage.getItem('store'))
+              datas=JSON.parse(localStorage.getItem('store'))
               if(datas){
                 setProducts(datas)
               }
@@ -68,12 +72,12 @@ function Product(props){
               
              setError(JSON.stringify(error.response.data.message))
           });
-          return function cleanUp(){
-            controller.abort()
-          }
+         
       }
   
-     
+      return () => {
+        source.cancel("axios request cancelled");
+       }
    
     },[error])
     let ProductsContent=Products.map((data,index)=>{

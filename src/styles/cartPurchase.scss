@@ -84,6 +84,7 @@ $DeviceMinWidth:275px;
     width: 99.2%;
     display: flex;
     justify-content: center;
+    overflow-x: scroll;
     span:hover{
         background-color: $LogoContainer;
     }
@@ -160,7 +161,7 @@ $DeviceMinWidth:275px;
       
         input{
             height: 96%;
-            width: 80%;
+            width: 50%;
             border: 1px solid $LogoContainer;
             border-bottom-left-radius: 2px;
             border-top-left-radius: 2px;
@@ -200,13 +201,16 @@ $DeviceMinWidth:275px;
 #chooseDelivery{
     background-color: transparent;
     border: none;
+    font-size: 20px
 }
+
 #DetailBodyContainer__Address{
     @include ArrangeDeliverySection();
 }
 #chooseAddress{
     background-color: transparent;
     border: none;
+    font-size: 20px
 }
 #DetailBodyContainer__check{
     @include ArrangeDeliverySection();

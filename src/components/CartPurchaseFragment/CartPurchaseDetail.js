@@ -9,8 +9,8 @@ function CartPurchaseDetail(){
     const[styleFor__slides,setStyleFor__slides]=useState()
     const[cartToPurchase,setCartToPurchase]=useState([])
     const[totalAmount,setTotalAmount]=useState()
-    let[emptyMessage,setEmptyMessage]=useState();
-    const[dots,setDots]=useState()
+    const[numOfItemToBuy,setNumOfItemToBuy]=useState()
+    const[emptyMessage,setEmptyMessage]=useState();
     const[slide,setSlide]=useState()
     let slideIndex=0;
     let interval='';
@@ -68,7 +68,6 @@ function CartPurchaseDetail(){
         placeHolder.forEach((input)=>{
             total+= parseInt(input.placeholder)
         })
-        console.log(total)
         setTotalAmount(total)
     }
     useEffect(()=>{
@@ -88,6 +87,7 @@ function CartPurchaseDetail(){
                 setEmptyMessage("No item to purchase ")
             }
             setStyleFor__slides({"width":`${datas.length}00%`})
+            setNumOfItemToBuy()
         }
         else if(datas==null){
             setEmptyMessage("No item to purchase ")
@@ -149,7 +149,8 @@ function CartPurchaseDetail(){
                         {cartToPurchase.map((data,index)=>{
                             return(
                             <span className="DetailSliderContainer__slides__dots" onClick={()=>currentslide(index)} key={index}></span>
-                        )   })}
+                            )   })
+                        }
                     </div>
 
         
@@ -173,16 +174,16 @@ function CartPurchaseDetail(){
                                 <li>Address</li>
                                 <li>
                                     <select id="chooseAddress" name="chooseAddress">
-                                        <option value="volvo">1</option>
-                                        <option value="saab">2</option>
-                                        <option value="fiat">3</option>
-                                        <option value="audi">4</option>
+                                        <option value="volvo">zuba</option>
+                                        <option value="saab">madalla</option>
+                                        <option value="fiat">wuse 2</option>
+                                        <option value="audi">cairo</option>
                                     </select>
                                 </li>
                             </ul>
                             <ul id="DetailBodyContainer__check">
                                 <li><Link className="DetailBodyContainer__check__link" to={"#"} id="CHECK">CHECK</Link></li>
-                                <li><Button  className="DetailBodyContainer__check__link" totalAmountP={totalAmount} heightP={"55px"} borderP={0}/></li>
+                                <li><Button  className="DetailBodyContainer__check__link" numOfItemToBuyP={numOfItemToBuy} totalAmountP={totalAmount} heightP={"55px"} borderP={0}/></li>
                                 <li><Link  className="DetailBodyContainer__check__link"  to={"/Home/cart"} >TO CART</Link></li>
                             </ul>
                             <ul id="DetailBodyContainer__DeliveryFee">

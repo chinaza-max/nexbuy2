@@ -6,6 +6,7 @@ $NavItemColor:#373737;
     margin: 0 auto;
     width: $Width;
 }
+
 @mixin  flexCenter{
     display: flex;
     justify-content: space-around;
@@ -82,6 +83,7 @@ $NavItemColor:#373737;
         color:$NavItemColor
     }
     .CartContentContainer__items__section1__text__ul2{
+        padding-top: 10px;
         @include flexCenter();
         @include CenterElement(97%);
         justify-content: start;
@@ -89,15 +91,15 @@ $NavItemColor:#373737;
             color: $LogoContainer
         }
         :nth-child(2){
-            margin-left: 15px;
+            margin-left: 25px;
             color: $LogoContainer;
             width: 18px;
         }
         :nth-child(3){
-            margin-left: 15px
+            margin-left: 25px
         }
         :nth-child(4){
-            margin-left: 15px;
+            margin-left: 35px;
             color: $LogoContainer;
             width: 18px;
         }
@@ -105,7 +107,7 @@ $NavItemColor:#373737;
     
 }
 .CartContentContainer__items__section1__text__ul3{
-
+    padding-top: 7px;
     @include flexCenter();
     justify-content:flex-end;
     

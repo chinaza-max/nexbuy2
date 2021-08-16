@@ -7,11 +7,14 @@ function App(props) {
   let[config,setConfig]=useState(); 
   let history = useHistory();
 
+
   function UpdateAmount(){
     if(props.totalAmountP===undefined){
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[props.indexP]
+        console.log(process.env.REACT_APP_FLUTTERWAVE_KEY)
+        console.log("process.env.REACT_APP_FLUTTERWAVE_KEY")
         setConfig({
-          public_key: "FLWPUBK_TEST-13df3e9d9f08d0f5626aae7b1fd76e19-X",
+          public_key: process.env.REACT_APP_FLUTTERWAVE_KEY,
           tx_ref: Date.now(),
           amount: parseInt(elementToDisplayAmount.innerHTML),
           currency: 'NGN',
@@ -23,14 +26,15 @@ function App(props) {
           },
           customizations: {
             title: 'NEXBUY',
-            description: 'Payment for items in cart',
+            description: `Payment for${" "+props.itemNameP}`,
             logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
           },
         })
     }
     else{
+        console.log( process.env.REACT_APP_FLUTTERWAVE_KEY)
           setConfig({
-            public_key: "FLWPUBK_TEST-13df3e9d9f08d0f5626aae7b1fd76e19-X",
+            public_key:process.env.REACT_APP_FLUTTERWAVE_KEY,
             tx_ref: Date.now(),
             amount: props.totalAmountP,
             currency: 'NGN',
@@ -42,13 +46,18 @@ function App(props) {
             },
             customizations: {
               title: 'NEXBUY',
-              description: 'Payment for items in cart',
+              description:"Payment for all item in cart" ,
               logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
             },
           })
     }
   }
 
+  function checkPaidItem(){
+    if(props.itemNameP!==undefined){
+      document.querySelectorAll(".check")[props.indexP].checked=true
+    }   
+  }
   const handleFlutterPayment = useFlutterwave(config);
 
   return (
@@ -60,21 +69,11 @@ function App(props) {
           handleFlutterPayment({
             callback: (response) => {
                console.log(response);
-                window.alert("payment succeful")
+                checkPaidItem()
                 closePaymentModal() // this will close the modal programmatically
-                history.push('/')
-                //for updating cart
-                console.log(props.itemNameP)
-                if(props.itemNameP!==undefined){
-                  console.log("yes")
-                  let datas= JSON.parse(localStorage.getItem('data'))
-                  let NewcartContent=datas.filter((obj)=>{
-                      return props.itemNameP!==obj.description
-                  })
-                  localStorage.setItem('data', JSON.stringify(NewcartContent))
-                }else{
-                  localStorage.removeItem('data');
-                }
+    
+              
+                history.push('/Home/cart')
                
             },
             onClose: () => {

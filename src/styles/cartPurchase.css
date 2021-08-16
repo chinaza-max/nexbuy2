@@ -85,6 +85,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow-x: scroll;
 }
 
 .DetailSliderContainer__slides__dot span:hover {
@@ -192,7 +193,7 @@
 
 .DetailBodyContainer__ul__li1 .DetailBodyContainer__ul__li1__span2 input {
   height: 96%;
-  width: 80%;
+  width: 50%;
   border: 1px solid #ED3137;
   border-bottom-left-radius: 2px;
   border-top-left-radius: 2px;
@@ -280,6 +281,7 @@
 #chooseDelivery {
   background-color: transparent;
   border: none;
+  font-size: 20px;
 }
 
 #DetailBodyContainer__Address {
@@ -304,6 +306,7 @@
 #chooseAddress {
   background-color: transparent;
   border: none;
+  font-size: 20px;
 }
 
 #DetailBodyContainer__check {
