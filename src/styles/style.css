@@ -336,12 +336,32 @@
   line-height: 48px;
 }
 
+#CHECK {
+  background-color: blue;
+  color: #FFFFFF;
+}
+
 .DetailBodyContainer__check__link {
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   width: 100%;
   height: 100%;
+  color: #ED3137;
+}
+
+.App button {
+  width: 100%;
+  font-size: 20px;
+  height: 55px;
+  background-color: transparent;
+  border: none;
+  background-color: #ED3137;
+  color: #FFFFFF;
+}
+
+.App button:focus {
+  outline: none;
 }
 
 #DetailBodyContainer__DeliveryFee {

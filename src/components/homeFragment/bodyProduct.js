@@ -8,7 +8,7 @@ import axios from "axios"
 function Product(props){
     const[Products,setProducts]=useState([])
     const[error,setError]=useState()
-  
+
     function addToCart(title,description,url,color,amount,index,altUrl){
       let cartIcons=document.querySelectorAll(".cartIcons")
       cartIcons[index].style.display='none';
@@ -64,8 +64,8 @@ function Product(props){
             }
     
           }).catch(function (error) {
-    
-               setError(JSON.stringify(error.response.data.message))
+              
+              // setError(JSON.stringify(error.response.data.message))
           });
           return function cleanUp(){
             controller.abort()
@@ -102,8 +102,8 @@ function Product(props){
     return(
     
         <Fragment >
-            <ul id="productContainer">   
-                  {Products!==""? ProductsContent :error?<DescriptionAlerts errorp={error}/>:<CircularIndeterminate/>} 
+            <ul id="productContainer">    
+                  {Products.length!==0? ProductsContent :error?<DescriptionAlerts errorp={error}/>:<CircularIndeterminate/>} 
             </ul>
         </Fragment>
     )

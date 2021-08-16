@@ -8,14 +8,7 @@ function CartContent(props){
     let[num,setnum]=useState(1);
     let[cartContent,setCartContent]=useState([]);
     let[emptyMessage,setEmptyMessage]=useState();
-    let[totalAmount,setTotalAmount]=useState();
     
-    function getTotalAmount(index){
-       
-     
-    
-       
-    }
     function decrease(index,amount){
         let elementToDisplayNum=document.querySelectorAll(".itemNumber")[index]
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[index]
@@ -38,33 +31,39 @@ function CartContent(props){
             elementToDisplayAmount.innerHTML=number*amount
         }
     }
-    function deleteFile(title){
+    function deleteFile(description){
         swal({
             title: "Are you sure?",
-            text:`youwant to delete ${title}`,
+            text:`youwant to delete ${description}`,
             icon: "warning",
             buttons: true,
             dangerMode: true,
             html: true
           })
           .then((willDelete) => {
-            try {
-                let datas= JSON.parse(localStorage.getItem('data'))
-                let NewcartContent=datas.filter((obj)=>{
-                    return title!==obj.title
-                })
-                setCartContent(NewcartContent)
-                localStorage.setItem('data', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
-                props.cartCountUpdateP()
-              } catch (e) {
-                if (e) {
-                    //QUOTA_EXCEEDED_ERR
-                  alert('Quota exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
-                }
-              }
-         
            
             if (willDelete) {
+                try {
+                    let datas= JSON.parse(localStorage.getItem('data'))
+                    //this section remove the deleted file and create a new cart
+                    let NewcartContent=datas.filter((obj)=>{
+                        return description!==obj.description
+                    })
+                    setCartContent(NewcartContent)
+                    //this checks if cart is empty
+                    if(datas.length===1){
+                        setEmptyMessage("your cart is empty")
+                    }
+                    localStorage.setItem('data', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
+    
+                    //for updating cart count
+                    props.cartCountUpdateP()
+                  } catch (e) {
+                    if (e) {
+                        //QUOTA_EXCEEDED_ERR
+                      alert('Quota exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
+                    }
+                  }
               swal("Poof! Your imaginary file has been deleted!", {
                 icon: "success",
                 text: "deleted",
@@ -76,21 +75,20 @@ function CartContent(props){
             }
           });
     }
-    /*const {id}=useParams()
-    function toggle(){
-        let element=document.getElementById("LogoContainer__dropDown")
-        element.classList.toggle("toggle")
-    }
-    function filteredTextHolder(e){
-        props.filteredTextFunP(e.target.value)
-    }*/
-
+   
+ 
     useEffect(()=>{
         let datas= JSON.parse(localStorage.getItem('data'))
+       
         if(datas){
-            setCartContent(datas)
+            if(datas.length>0){
+                setCartContent(datas)
+            }
+            else{
+                setEmptyMessage("your cart is empty")
+            }
         }
-        else if(datas==null){
+        else if(datas===null||datas.length===0){
             setEmptyMessage("your cart is empty")
         }
        
@@ -106,7 +104,7 @@ function CartContent(props){
                     <ul className="CartContentContainer__items__section1__text__ul1">
                         <li>{data.title+" "}  <input type="checkbox" className="check" />  </li>
                         <li> 
-                            <DeleteIcon onClick={()=>deleteFile(data.title)}/>
+                            <DeleteIcon onClick={()=>deleteFile(data.description)}/>
                         </li>
                     </ul>
                     <p>{data.description} 
@@ -131,8 +129,8 @@ function CartContent(props){
                 </li>
             </ul>
             <ul  className="CartContentContainer__items__section2">
-                <li><Button  className="DetailBodyContainer__check__link"  totalAmountP={data.amount}  heightP={"48px"} borderP={12} /></li>
-                <li ><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
+                <li><Button indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.description}/></li>
+                <li><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
             </ul>
         </div>
         )
@@ -141,7 +139,7 @@ function CartContent(props){
     
         <Fragment>
             <div id="CartContentContainer">
-                {cartContent!=""? carts:emptyMessage? <SimpleAlerts emptyMessagep={emptyMessage}/>:<CircularIndeterminate/>}
+                {cartContent.length!==0? carts:emptyMessage? <SimpleAlerts emptyMessagep={emptyMessage}/>:<CircularIndeterminate/>}
             </div>
         </Fragment>
     )

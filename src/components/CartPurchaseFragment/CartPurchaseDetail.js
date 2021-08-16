@@ -81,7 +81,12 @@ function CartPurchaseDetail(){
         let datas=JSON.parse(window.localStorage.getItem('data'))
         calTotalAmount()
         if(datas){
-            setCartToPurchase(datas)
+            if(datas.length>0){
+                setCartToPurchase(datas)
+            }
+            else{
+                setEmptyMessage("No item to purchase ")
+            }
             setStyleFor__slides({"width":`${datas.length}00%`})
         }
         else if(datas==null){
@@ -149,7 +154,7 @@ function CartPurchaseDetail(){
 
         
                 </div>  
-                {cartToPurchase!=""?
+                {cartToPurchase.length!==0?
 
                         <div id="DetailBodyContainer">
                              <ul id="DetailBodyContainer__Delivery">

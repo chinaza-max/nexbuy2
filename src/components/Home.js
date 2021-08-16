@@ -16,7 +16,7 @@ constructor({match}){
     this.filteredTextFun=this.filteredTextFun.bind(this)
     this.cartCount=this.cartCount.bind(this)
     this.mainFillerFunc=this.mainFillerFunc.bind(this)
-    this.state={filteredText:'',cartCount:JSON.parse(localStorage.getItem('data')).length}
+    this.state={filteredText:'',cartCount:JSON.parse(localStorage.getItem('data'))===null ?0:JSON.parse(localStorage.getItem('data')).length}
     
     this.match=match
     this.color="red"
