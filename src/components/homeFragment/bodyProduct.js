@@ -91,13 +91,13 @@ function Product(props){
                       <Link className="productContainer__Link" to={"#"}>
                         <img  src={data.image.url} alt={data.altImageUrl}></img>
                       </Link>
-                      <h5>{data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1]+" "}
-                          <input type="checkbox" className="check" />
+                      <h5 aria-labelledby='product-title'>{data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1]+" "}
+                          <input type="checkbox" role="checkbox" aria-checked="false" className="check" />
                          </h5>
                       <p>{data.productTitle}</p>
                       <div>
                         <span>NGN{" "+data.prices[0].regularPrice.minPrice}</span>
-                        <span  style={{color:'red'}} onClick={()=>{addToCart(data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1],
+                        <span aria-label="Add to Cart"  style={{color:'red'}} onClick={()=>{addToCart(data.productTitle.split(' ')[0]+" "+ data.productTitle.split(' ')[1],
                           data.productTitle,data.image.url,data.availableColr,data.prices[0].regularPrice.minPrice,index,data.altImageUrl)}}> <ShoppingCartIcon className="cartIcons"/></span>
                       </div>
                     </li>

@@ -106,11 +106,11 @@ function CartPurchaseDetail(){
                                         <span className="DetailBodyContainer__ul__li1__span2"><input className="placeHolder" placeholder={data.amount} readOnly></input></span>
                                     </li>
                                     <li> 
-                                        <select className="color" name="color">
-                                             <option>COLOR</option>
+                                        <select name='color-options' aria-label='Color' className="color" name="color">
+                                             <option  role='option' aria-selected='false'>COLOR</option>
                                              {data.color.map((data)=>{
                                                     return(
-                                                            <option value={data} key={data}>{data}</option>
+                                                            <option value={data} key={data}  role='option' aria-selected='false'>{data}</option>
                                                     )})}
                                         </select>
                                     </li>

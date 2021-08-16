@@ -102,7 +102,7 @@ function CartContent(props){
             </li>
                 <li className="CartContentContainer__items__section1__text">
                     <ul className="CartContentContainer__items__section1__text__ul1">
-                        <li>{data.title+" "}  <input type="checkbox" className="check"/>  </li>
+                        <li>{data.title+" "}  <input type="checkbox" role="checkbox" aria-checked="false" className="check"/>  </li>
                         <li> 
                             <DeleteIcon onClick={()=>deleteFile(data.description)}/>
                         </li>
