@@ -2,12 +2,14 @@ import {Fragment ,useEffect,useState} from 'react';
 import { Link,useParams } from "react-router-dom";
 import {DeleteIcon,CircularIndeterminate,SimpleAlerts} from "../icons";
 import Button from  "../paymentSystem/paymentBody"
-import swal from 'sweetalert';
+//import swal from 'sweetalert';
+import Swal from 'sweetalert2'
+
 
 function CartContent(props){
-    let[num,setnum]=useState(1);
-    let[cartContent,setCartContent]=useState([]);
-    let[emptyMessage,setEmptyMessage]=useState();
+    const[num,setnum]=useState(1);
+    const[cartContent,setCartContent]=useState([]);
+    const[emptyMessage,setEmptyMessage]=useState();
     
     function decrease(index,amount){
         let elementToDisplayNum=document.querySelectorAll(".itemNumber")[index]
@@ -31,10 +33,52 @@ function CartContent(props){
             elementToDisplayAmount.innerHTML=(number*amount).toFixed(2);
         }
     }
-    function deleteFile(description){
-        swal({
+    function deleteFile(description,URL,altURL){
+
+        Swal.fire({
+            title: 'remove from cart?',
+            text: description,
+            imageUrl:URL,
+            imageWidth: 200,
+            imageHeight:150,
+            imageAlt: altURL,
+            showCancelButton: true,
+            titleColor:"#ED3137",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                
+                    let datas= JSON.parse(localStorage.getItem('data'))
+                    //this section remove the deleted file and create a new cart
+                    let NewcartContent=datas.filter((obj)=>{
+                        return description!==obj.description
+                    })
+                    setCartContent(NewcartContent)
+                    //this checks if cart is empty
+                    if(datas.length===1){
+                        setEmptyMessage("your cart is empty")
+                    }
+                    localStorage.setItem('data', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
+                    //for updating cart count
+                    props.cartCountUpdateP()
+    
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+        })
+
+
+
+
+
+  /*      swal({
             title: "Are you sure?",
-            text:`youwant to delete ${description}`,
+            text:`you want to delete ${description}`,
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -73,7 +117,7 @@ function CartContent(props){
             } else {
               swal("Your imaginary file is safe!");
             }
-          });
+          });*/
     }
    
  
@@ -104,7 +148,7 @@ function CartContent(props){
                     <ul className="CartContentContainer__items__section1__text__ul1">
                         <li>{data.title+" "}  <input type="checkbox" role="checkbox" aria-checked="false" className="check"/>  </li>
                         <li> 
-                            <DeleteIcon onClick={()=>deleteFile(data.description)}/>
+                            <DeleteIcon onClick={()=>deleteFile(data.description,data.url,data.altUrl)}/>
                         </li>
                     </ul>
                     <p>{data.description} 

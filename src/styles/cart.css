@@ -141,6 +141,10 @@
   width: 18px;
 }
 
+.CartContentContainer__items__section1__text .CartContentContainer__items__section1__text__ul2 :nth-child(4):hover {
+  cursor: pointer;
+}
+
 .CartContentContainer__items__section1__text__ul3 {
   padding-top: 7px;
   display: -webkit-box;
