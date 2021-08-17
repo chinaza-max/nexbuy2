@@ -10,6 +10,7 @@ function App(props) {
   function UpdateAmount(){
     if(props.totalAmountP===undefined){
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[props.indexP]
+  
         setConfig({
           public_key: process.env.REACT_APP_FLUTTERWAVE_KEY,
           tx_ref: Date.now(),
@@ -29,6 +30,7 @@ function App(props) {
         })
     }
     else{
+    
           setConfig({
             public_key: process.env.REACT_APP_FLUTTERWAVE_KEY,
             tx_ref: Date.now(),
