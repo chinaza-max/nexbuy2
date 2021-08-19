@@ -15,7 +15,6 @@ constructor({match}){
     super()
     this.filteredTextFun=this.filteredTextFun.bind(this)
     this.cartCount=this.cartCount.bind(this)
-    this.mainFillerFunc=this.mainFillerFunc.bind(this)
     this.state={filteredText:'',cartCount:JSON.parse(localStorage.getItem('cartData'))===null ?0:JSON.parse(localStorage.getItem('cartData')).length}
     
     }
@@ -27,16 +26,9 @@ constructor({match}){
         this.setState({filteredText:value})
      
     }
-    mainFillerFunc(value){
-        this.setState({view:value})
-    }
+   
     
- 
- 
-
-     
     render(){
-        //let id=this.match.url.slice(6);
    
         return(
             <div className="body">

@@ -50,7 +50,19 @@ function App(props) {
           })
     }
   }
-
+  function updateCart(id){
+    if(id==="emptyCart"){
+      localStorage.removeItem("cartData");
+    }
+    else{
+        let datas= JSON.parse(localStorage.getItem('cartData'))
+        let NewcartContent=datas.filter((obj)=>{
+          return id!==obj.id
+        })
+        localStorage.setItem('cartData', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
+    }
+    window.location.reload(false);
+  }
 
   const handleFlutterPayment = useFlutterwave(config);
 
@@ -64,8 +76,9 @@ function App(props) {
             callback: (response) => {
                console.log(response);
                 closePaymentModal() // this will close the modal programmatically
-                history.push('/Home/cart')
-               
+            
+                history.replace('/Home/cart')
+                updateCart(props.idP)
             },
             onClose: () => {
               setConfig()

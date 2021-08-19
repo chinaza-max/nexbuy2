@@ -10,7 +10,7 @@ function CartContent(props){
     const[num,setnum]=useState(1);
     const[cartContent,setCartContent]=useState([]);
     const[emptyMessage,setEmptyMessage]=useState();
-    
+   
     function decrease(index,amount){
         let elementToDisplayNum=document.querySelectorAll(".itemNumber")[index]
         let elementToDisplayAmount=document.querySelectorAll(".amountSingleItem")[index]
@@ -175,7 +175,7 @@ function CartContent(props){
                 </li>
             </ul>
             <ul  className="CartContentContainer__items__section2">
-                <li><Button  role="button" aria-pressed="false"  indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.title}/></li>
+                <li><Button  role="button" aria-pressed="false"  indexP={index}   heightP={"48px"} borderP={12}  itemNameP={data.title} idP={data.id}/></li>
                 <li><Link  className="CartContentContainer__items__section2__CONFIRM"to={"#"}>CONFIRM ARRIVAL</Link></li>
             </ul>
         </div>

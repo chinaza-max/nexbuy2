@@ -158,7 +158,7 @@ function CartPurchaseDetail(){
                             </ul>
                             <ul id="DetailBodyContainer__check">
                                 <li><Link className="DetailBodyContainer__check__link" to={"#"} id="CHECK">CHECK</Link></li>
-                                <li><Button  role="button" aria-pressed="false" numOfItemToBuyP={numOfItemToBuy} totalAmountP={totalAmount} heightP={"55px"} borderP={0}/></li>
+                                <li><Button idP="emptyCart" role="button" aria-pressed="false" numOfItemToBuyP={numOfItemToBuy} totalAmountP={totalAmount} heightP={"55px"} borderP={0}/></li>
                                 <li><Link  className="DetailBodyContainer__check__link"  to={"/Home/cart"} >TO CART</Link></li>
                             </ul>
                             <ul id="DetailBodyContainer__DeliveryFee">

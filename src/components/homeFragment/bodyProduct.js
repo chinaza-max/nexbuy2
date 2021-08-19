@@ -99,7 +99,7 @@ function Product(props){
         let datas=JSON.parse(localStorage.getItem('store'));
     
             datas.forEach((element,index) => {
-              console.log(element.check)
+            
               if(element.check==="false"){
                  document.querySelectorAll(".checkHome")[index].checked=false
                  document.querySelectorAll(".checkHome")[index].setAttribute("aria-checked", false)
@@ -168,7 +168,6 @@ function Product(props){
               restoreCheck()
             }, 10)
          }
-        
          
       }
       else if(datas===null){

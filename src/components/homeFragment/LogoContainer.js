@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
   
 function LogoContainer(props){
-    const {id}=useParams()
+    
     const classes = useStyles();
     function toggle(){
         let element=document.getElementById("LogoContainer__dropDown")
@@ -92,17 +92,17 @@ function LogoContainer(props){
                 <nav role="navigation">
                     <ul  className="LogoContainer__dropDown LogoContainer__dropDown-M" id="LogoContainer__dropDown" >
                         <li className="LogoContainer__dropDown__item">
-                            <Link   to={`/`} id="LogoContainer__dropDown__item__link">
+                            <Link   to={`/`} className="LogoContainer__dropDown__item__link">
                                 Home
                             </Link>  
                         </li>
                         <li className="LogoContainer__dropDown__item"> 
-                            <Link   to={`/home/CartPurchase`} id="LogoContainer__dropDown__item__link">
+                            <Link   to={`/home/CartPurchase`} className="LogoContainer__dropDown__item__link">
                                 Cart Purchase
                             </Link>  
                         </li>
                         <li className="LogoContainer__dropDown__item">
-                            <Link  to={"/Home/cart"} id="LogoContainer__dropDown__item__link">
+                            <Link  to={"/Home/cart"} className="LogoContainer__dropDown__item__link">
                                 Cart 
                             </Link>  
                         </li>
