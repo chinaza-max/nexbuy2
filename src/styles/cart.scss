@@ -92,7 +92,7 @@ $NavItemColor:#373737;
             color: $LogoContainer
         }
         :nth-child(2){
-            margin-left: 25px;
+            margin-left: 20px;
             color: $LogoContainer;
             width: 18px;
         }
@@ -100,7 +100,7 @@ $NavItemColor:#373737;
             margin-left: 25px
         }
         :nth-child(4){
-            margin-left: 35px;
+            margin-left: 30px;
             color: $LogoContainer;
             width: 18px;
         }
@@ -125,7 +125,8 @@ $NavItemColor:#373737;
 }
 
 .CartContentContainer__items__section2{
-    margin-top: 20px;
+    margin-top: 8px;
+    margin-bottom: 20px;
     height: fit-content;
     @include flexCenter();
     justify-content: space-between;
@@ -148,4 +149,16 @@ $NavItemColor:#373737;
 
 .CartContentContainer__items__section2__CONFIRM{
         @include CartSection($FooterBackgroundColor1,red);
+}
+
+
+@media  (max-width:320px){
+    .CartContentContainer__items__section1__text{
+        .CartContentContainer__items__section1__text__ul2{
+            :nth-child(1){
+                color: $LogoContainer;
+                width: 100%;
+            }
+        }
+    }
 }

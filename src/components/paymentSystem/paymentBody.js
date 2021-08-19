@@ -51,13 +51,7 @@ function App(props) {
     }
   }
 
-  function checkPaidItem(){
-    if(props.itemNameP!==undefined){
-      document.querySelectorAll(".check")[props.indexP].checked=true
-    }
 
-     
-  }
   const handleFlutterPayment = useFlutterwave(config);
 
   return (
@@ -69,10 +63,7 @@ function App(props) {
           handleFlutterPayment({
             callback: (response) => {
                console.log(response);
-                checkPaidItem()
                 closePaymentModal() // this will close the modal programmatically
-    
-              
                 history.push('/Home/cart')
                
             },
@@ -80,7 +71,6 @@ function App(props) {
               setConfig()
             },
           });
-
         }}
       >
         Payment 

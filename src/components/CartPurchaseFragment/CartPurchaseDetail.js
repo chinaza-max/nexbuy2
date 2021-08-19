@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {Fragment,useState,useEffect} from 'react';
 import {CircularIndeterminate,SimpleAlerts} from "../icons";
-import Button from  "../paymentSystem/paymentBody"
+import Button from  "../paymentSystem/paymentBody";
 
 
 function CartPurchaseDetail(){
@@ -13,30 +13,9 @@ function CartPurchaseDetail(){
     const[emptyMessage,setEmptyMessage]=useState();
     const[slide,setSlide]=useState()
     let slideIndex=0;
-    let interval='';
 
     
-/*function showslide(){
-    slideIndex++;
-  
-        if(slide){  
-            console.log(slide)  
-            if(slideIndex>slide.length){
-                slideIndex=1; 
-                //console.log(slide.length)
-            }
-            else if(slideIndex<1){  
-                slideIndex=slide.length
-                // console.log(slide.length)
-            }
-            for(let i=0; i<dots.length; i++){
-                const element=dots[i];
-                element.classList.remove("dot-active")
-            }
-            setDetailSliderContainer__slidesStyle({"left":`-${slideIndex-1}00%`})
-            dots[slideIndex-1].classList.add("dot-active")
-        }
-    }*/
+
     function select(amount,index){
        let num=document.getElementById(`select${index}`).value
        let placeHolder=document.querySelectorAll(".placeHolder");
@@ -58,7 +37,6 @@ function CartPurchaseDetail(){
         }
        
         setStyleFor__slides({"left":`-${index}00%`,"width":`-${index+1}00%`})
-      
         dots[index].classList.add("dot-active")
         slideIndex=index
     }
@@ -71,13 +49,10 @@ function CartPurchaseDetail(){
         setTotalAmount(total)
     }
     useEffect(()=>{
-       // interval=window.setInterval(()=>{ showslide()},2000)
        
         let slide=document.querySelectorAll(".DetailSliderContainer__slides_slide");
-      
-        
         setSlide(slide)
-        let datas=JSON.parse(window.localStorage.getItem('data'))
+        let datas=JSON.parse(localStorage.getItem('cartData'))
         calTotalAmount()
         if(datas){
             if(datas.length>0){

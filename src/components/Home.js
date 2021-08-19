@@ -16,10 +16,8 @@ constructor({match}){
     this.filteredTextFun=this.filteredTextFun.bind(this)
     this.cartCount=this.cartCount.bind(this)
     this.mainFillerFunc=this.mainFillerFunc.bind(this)
-    this.state={filteredText:'',cartCount:JSON.parse(localStorage.getItem('data'))===null ?0:JSON.parse(localStorage.getItem('data')).length}
+    this.state={filteredText:'',cartCount:JSON.parse(localStorage.getItem('cartData'))===null ?0:JSON.parse(localStorage.getItem('cartData')).length}
     
-    this.match=match
-    this.color="red"
     }
     cartCount(value){
         
@@ -39,7 +37,7 @@ constructor({match}){
      
     render(){
         //let id=this.match.url.slice(6);
-        
+   
         return(
             <div className="body">
                 <header role="banner">

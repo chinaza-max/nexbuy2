@@ -11,7 +11,7 @@ const CartBody=(props)=>{
     const[cartCount,setCartCount]=useState()
     function cartCountUpdate(){
     
-        let datas= JSON.parse(localStorage.getItem('data'))
+        let datas= JSON.parse(localStorage.getItem('cartData'))
         if(datas){
             setCartCount(datas.length)
         }
@@ -20,7 +20,7 @@ const CartBody=(props)=>{
         }
     }
     useEffect(async()=>{  
-        let datas= JSON.parse(localStorage.getItem('data'))
+        let datas= JSON.parse(localStorage.getItem('cartData'))
         if(datas){
             setCartCount(datas.length)
         }

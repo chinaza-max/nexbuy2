@@ -19,7 +19,7 @@ function CartContent(props){
         if(number!=1){
             number--;
             elementToDisplayNum.innerHTML=number
-            elementToDisplayAmount.innerHTML=(number*amount).toFixed(2);
+            elementToDisplayAmount.innerHTML=(number*amount).toFixed(1);
         }
         return num;
     }
@@ -33,7 +33,7 @@ function CartContent(props){
             elementToDisplayAmount.innerHTML=(number*amount).toFixed(2);
         }
     }
-    function deleteFile(description,URL,altURL){
+    function deleteFile(description,URL,altURL,id){
 
         Swal.fire({
             title: 'remove from cart?',
@@ -50,17 +50,17 @@ function CartContent(props){
           }).then((result) => {
             if (result.isConfirmed) {
                 
-                    let datas= JSON.parse(localStorage.getItem('data'))
+                    let datas= JSON.parse(localStorage.getItem('cartData'))
                     //this section remove the deleted file and create a new cart
                     let NewcartContent=datas.filter((obj)=>{
-                        return description!==obj.description
+                        return id!==obj.id
                     })
                     setCartContent(NewcartContent)
                     //this checks if cart is empty
                     if(datas.length===1){
                         setEmptyMessage("your cart is empty")
                     }
-                    localStorage.setItem('data', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
+                    localStorage.setItem('cartData', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
                     //for updating cart count
                     props.cartCountUpdateP()
     
@@ -72,61 +72,63 @@ function CartContent(props){
             }
         })
 
-
-
-
-
-  /*      swal({
-            title: "Are you sure?",
-            text:`you want to delete ${description}`,
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            html: true
-          })
-          .then((willDelete) => {
-           
-            if (willDelete) {
-                try {
-                    let datas= JSON.parse(localStorage.getItem('data'))
-                    //this section remove the deleted file and create a new cart
-                    let NewcartContent=datas.filter((obj)=>{
-                        return description!==obj.description
-                    })
-                    setCartContent(NewcartContent)
-                    //this checks if cart is empty
-                    if(datas.length===1){
-                        setEmptyMessage("your cart is empty")
-                    }
-                    localStorage.setItem('data', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
-    
-                    //for updating cart count
-                    props.cartCountUpdateP()
-                  } catch (e) {
-                    if (e) {
-                        //QUOTA_EXCEEDED_ERR
-                      alert('Quota exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
-                    }
-                  }
-              swal("Poof! Your imaginary file has been deleted!", {
-                icon: "success",
-                text: "deleted",
-                html: true
-              });
-
-            } else {
-              swal("Your imaginary file is safe!");
-            }
-          });*/
     }
-   
- 
+
+    function   restoreCheck2(){
+        let datas=JSON.parse(localStorage.getItem('cartData'));
+    
+            datas.forEach((element,index) => {
+              if(element.check==="false"){
+                 document.querySelectorAll(".checkcart")[index].checked=false
+                 document.querySelectorAll(".checkcart")[index].setAttribute("aria-checked", false)
+              }
+              else{
+              
+                 document.querySelectorAll(".checkcart")[index].checked=true
+                 document.querySelectorAll(".checkcart")[index].setAttribute("aria-checked", true)
+              }
+            })
+    }
+    function updateRestoreCheck2(index,id){
+        let checkState=document.querySelectorAll(".checkcart")[index].checked
+        let datas=JSON.parse(localStorage.getItem('cartData'))
+        console.log(checkState)
+        if(checkState){
+           
+          let newStore= datas.map((data)=>{
+                              if(data.id===id){
+                                return { ...data, check: true }
+                              }
+                              else{
+                                return data
+                              }
+                          })         
+          localStorage.setItem('cartData', JSON.stringify(newStore))
+        }
+        else{
+              let newStore= datas.map((data)=>{
+                  if(data.id===id){
+                    return { ...data, check: false }
+                  }
+                  else{
+                    return data
+                  }
+              })         
+              localStorage.setItem('cartData', JSON.stringify(newStore))
+        }
+        datas=JSON.parse(localStorage.getItem('cartData'))
+        console.log(datas[0].check)
+
+    }
     useEffect(()=>{
-        let datas= JSON.parse(localStorage.getItem('data'))
+        let datas= JSON.parse(localStorage.getItem('cartData'))
        
         if(datas){
             if(datas.length>0){
                 setCartContent(datas)
+                setTimeout(() => {
+                    restoreCheck2()
+                  }, 10)
             }
             else{
                 setEmptyMessage("your cart is empty")
@@ -139,16 +141,16 @@ function CartContent(props){
     },[emptyMessage])
     let carts=cartContent.map((data,index)=>{
         return(
-            <div className="CartContentContainer__items" key={data.url+index}>
+            <div className="CartContentContainer__items" key={data.id}>
             <ul className="CartContentContainer__items__section1">
                 <li className="CartContentContainer__items__section1__img" role="figure">
                     <img src={data.url} alt={data.altUrl}></img>
                 </li>
                 <li className="CartContentContainer__items__section1__text">
                     <ul className="CartContentContainer__items__section1__text__ul1">
-                        <li>{data.title+" "}  <input type="checkbox" role="checkbox" aria-checked="false" className="check"/>  </li>
+                        <li>{data.title+" "}  <input type="checkbox" role="checkbox" aria-checked="false" className="checkcart" onClick={()=>updateRestoreCheck2(index,data.id)}/>  </li>
                         <li> 
-                            <DeleteIcon onClick={()=>deleteFile(data.description,data.url,data.altUrl)}/>
+                            <DeleteIcon onClick={()=>deleteFile(data.description,data.url,data.altUrl,data.id)}/>
                         </li>
                     </ul>
                     <p>{data.description} 

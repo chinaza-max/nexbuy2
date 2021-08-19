@@ -181,8 +181,18 @@ header{
     }
     li:hover {
         cursor: pointer;
-      }
+    }
 }
+
+.active2 h3{
+   color: $LogoContainer;
+}
+.active2 span{
+    height: 33px;
+    transition: height 0.19s ease-out;
+}
+
+
 #BodyNavContainer__nav{
     width: 99%;
     min-width: $DeviceMinWidth;
