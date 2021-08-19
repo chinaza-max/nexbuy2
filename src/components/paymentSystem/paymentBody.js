@@ -62,7 +62,7 @@ function App(props) {
 
         localStorage.setItem('cartData', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
     }
-   // window.location.reload(false);
+    window.location.reload(false);
   }
 
   const handleFlutterPayment = useFlutterwave(config);
