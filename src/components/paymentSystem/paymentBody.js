@@ -59,9 +59,10 @@ function App(props) {
         let NewcartContent=datas.filter((obj)=>{
           return id!==obj.id
         })
+
         localStorage.setItem('cartData', JSON.stringify(NewcartContent))//saves to the database, "key", "value";
     }
-    window.location.reload(false);
+   // window.location.reload(false);
   }
 
   const handleFlutterPayment = useFlutterwave(config);
@@ -74,11 +75,13 @@ function App(props) {
           config===undefined?   UpdateAmount() :
           handleFlutterPayment({
             callback: (response) => {
-               console.log(response);
+              // console.log(response);   
                 closePaymentModal() // this will close the modal programmatically
-            
                 history.replace('/Home/cart')
-                updateCart(props.idP)
+          
+                if(response.status==="successful"){
+                  updateCart(props.idP)
+                }
             },
             onClose: () => {
               setConfig()
